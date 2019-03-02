@@ -5,7 +5,7 @@
       text-color="#fff"
       router="true"
       :collapse="isCollapse"
-      collapse-transition="false"
+      :collapse-transition="false"
     >
       <el-menu-item index="1"></el-menu-item>
       <el-menu-item
@@ -118,10 +118,16 @@ export default {
 .el-menu {
   border-right: none;
   height: 100%;
+  position: fixed;
+  width: 240px;
 }
 .el-menu-item {
   padding: 0px 50px !important;
 }
+.el-menu--collapse {
+  width: 65px;
+}
+.el-menu--collapse .el-menu-item,
 .v-leave-active .el-menu-item {
   padding: 0px 20px !important;
 }
