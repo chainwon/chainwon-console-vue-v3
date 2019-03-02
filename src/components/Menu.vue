@@ -1,0 +1,166 @@
+<template>
+  <el-aside :width="width" id="chainwon-menu" style="background-color:#545c64;min-height: 100vh;">
+    <el-menu
+      background-color="#545c64"
+      text-color="#fff"
+      router="true"
+      :collapse="isCollapse"
+      collapse-transition="false"
+    >
+      <el-menu-item index="1"></el-menu-item>
+      <el-menu-item
+        :index="false"
+        onclick="window.open('https://www.chainwon.com/')"
+      >
+        <i class="iconfont icon-home-fill"></i>
+        <span slot="title">回到导航</span>
+      </el-menu-item>
+      <el-menu-item index="/setting/index">
+        <i class="iconfont icon-setting-fill"></i>
+        <span slot="title">个性设置</span>
+      </el-menu-item>
+      <el-menu-item index="/setting/navigation">
+        <i class="iconfont icon-unorderedlist"></i>
+        <span slot="title">我的网址</span>
+      </el-menu-item>
+      <li class="chainwon-divider"></li>
+      <el-menu-item index="/store/navigation">
+        <i class="iconfont icon-compass-fill"></i>
+        <span slot="title">网址大全</span>
+      </el-menu-item>
+      <li class="chainwon-divider"></li>
+      <el-menu-item index="/public/navigation">
+        <i class="iconfont icon-plus-circle-fill"></i>
+        <span slot="title">收录网址</span>
+      </el-menu-item>
+      <el-menu-item
+        :index="false"
+        onclick="window.open('https://shang.qq.com/wpa/qunwpa?idkey=d75bc474c00a39431e2dd839812bb5bc2fe401a3f47cdf256bd8803a1c22cdcb')"
+      >
+        <i class="iconfont icon-info-circle-fill"></i>
+        <span slot="title">意见反馈</span>
+      </el-menu-item>
+      <el-menu-item :index="false" class="chainwon-retract" @click="retract()">
+        <i class="iconfont icon-outdent" v-if="!isCollapse"></i>
+        <i class="iconfont icon-indent" v-if="isCollapse"></i>
+        <span slot="title">收起菜单</span>
+      </el-menu-item>
+    </el-menu>
+  </el-aside>
+</template>
+
+<script>
+export default {
+  name: "Menu",
+  data() {
+    return {
+      isCollapse: false,
+      width: "240px",
+      screenWidth: document.body.clientWidth // 这里是给到了一个默认值 （这个很重要）
+    };
+  },
+  created() {
+    this.autoScreen();
+  },
+  mounted() {
+    const that = this;
+    window.onresize = () => {
+      return (() => {
+        window.screenWidth = document.body.clientWidth;
+        that.screenWidth = window.screenWidth;
+      })();
+    };
+  },
+  watch: {
+    screenWidth() {
+      this.autoScreen();
+    }
+  },
+  methods: {
+    retract() {
+      if (this.isCollapse) {
+        this.isCollapse = false;
+        this.width = "240px";
+      } else {
+        this.isCollapse = true;
+        this.width = "65px";
+      }
+    },
+    autoScreen() {
+      if (this.screenWidth < 1280) {
+        this.isCollapse = true;
+        this.width = "65px";
+      } else {
+        this.isCollapse = false;
+        this.width = "240px";
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+.el-menu-item.is-active {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.el-menu-item.is-active::before {
+  content: "";
+  height: 100%;
+  width: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+.el-menu {
+  border-right: none;
+  height: 100%;
+}
+.el-menu-item {
+  padding: 0px 50px !important;
+}
+.v-leave-active .el-menu-item {
+  padding: 0px 20px !important;
+}
+#chainwon-menu {
+  background-color: #545c64;
+  min-height: 100vh;
+}
+
+#chainwon-menu i {
+  vertical-align: middle;
+  margin-right: 20px;
+  width: 24px;
+  text-align: center;
+  font-size: 22px;
+  display: inline-block;
+  padding-top: 2px;
+  color: #878d99;
+}
+
+#chainwon-menu span {
+  font-size: 16px;
+}
+
+#chainwon-menu a {
+  text-decoration-line: none;
+  display: block;
+  color: #fff;
+}
+
+#chainwon-menu .chainwon-divider {
+  background-color: rgba(0, 0, 0, 0.12);
+  width: 100%;
+  height: 1px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+#chainwon-menu .chainwon-retract {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>

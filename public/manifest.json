@@ -1,0 +1,52 @@
+{
+  "name": "一中墙",
+  "short_name": "一中墙",
+  "theme_color": "#ffffff",
+  "background_color": "#ff7b8c",
+  "display": "standalone",
+  "Scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icon/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "png"
+    },
+    {
+      "src": "icon/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "png"
+    },
+    {
+      "src": "icon/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "png"
+    },
+    {
+      "src": "icon/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "png"
+    },
+    {
+      "src": "icon/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "png"
+    },
+    {
+      "src": "icon/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "png"
+    },
+    {
+      "src": "icon/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "png"
+    },
+    {
+      "src": "icon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "png"
+    }
+  ],
+  "splash_pages": null
+}
