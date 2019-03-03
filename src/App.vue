@@ -59,6 +59,12 @@ body {
   border-radius: 4px;
   background-color: #fff;
 }
+.chainwon-box {
+  padding: 1px 20px;
+}
+.chainwon-box p {
+  margin: 20px 0;
+}
 @media screen and (max-width: 768px) {
   #chainwon-content {
     padding: 10px;

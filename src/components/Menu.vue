@@ -8,10 +8,7 @@
       :collapse-transition="false"
     >
       <el-menu-item :index="false"></el-menu-item>
-      <el-menu-item
-        :index="false"
-        onclick="window.open('https://www.chainwon.com/')"
-      >
+      <el-menu-item :index="false" onclick="window.open('https://www.chainwon.com/')">
         <i class="iconfont icon-home-fill"></i>
         <span slot="title">回到导航</span>
       </el-menu-item>
@@ -33,12 +30,9 @@
         <i class="iconfont icon-plus-circle-fill"></i>
         <span slot="title">收录网址</span>
       </el-menu-item>
-      <el-menu-item
-        :index="false"
-        onclick="window.open('https://shang.qq.com/wpa/qunwpa?idkey=d75bc474c00a39431e2dd839812bb5bc2fe401a3f47cdf256bd8803a1c22cdcb')"
-      >
+      <el-menu-item index="/public/about">
         <i class="iconfont icon-info-circle-fill"></i>
-        <span slot="title">意见反馈</span>
+        <span slot="title">关于本站</span>
       </el-menu-item>
       <el-menu-item :index="false" class="chainwon-retract" @click="retract()">
         <i class="iconfont icon-outdent" v-if="!isCollapse"></i>
