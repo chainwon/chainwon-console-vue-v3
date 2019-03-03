@@ -25,8 +25,8 @@ export default {
 
 <style scoped>
 .el-button {
-    margin-bottom: 15px;
-    width: 90px;
+  margin-bottom: 15px;
+  width: 90px;
 }
 .chainwon-project-box {
   text-align: center;
@@ -67,5 +67,18 @@ export default {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+  .chainwon-project-box .chainwon-background {
+    height: 75px;
+  }
+  .chainwon-project-box .chainwon-logo img {
+    width: 80px;
+    height: 80px;
+  }
+  .el-button {
+    margin-bottom: 15px;
+    width: 70px;
+  }
 }
 </style>

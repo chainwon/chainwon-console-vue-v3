@@ -3,11 +3,11 @@
     <el-menu
       background-color="#545c64"
       text-color="#fff"
-      router="true"
+      :router="true"
       :collapse="isCollapse"
       :collapse-transition="false"
     >
-      <el-menu-item index="1"></el-menu-item>
+      <el-menu-item :index="false"></el-menu-item>
       <el-menu-item
         :index="false"
         onclick="window.open('https://www.chainwon.com/')"
@@ -63,18 +63,12 @@ export default {
     this.autoScreen();
   },
   mounted() {
-    const that = this;
     window.onresize = () => {
       return (() => {
-        window.screenWidth = document.body.clientWidth;
-        that.screenWidth = window.screenWidth;
+        this.screenWidth = document.body.clientWidth;
+        this.autoScreen();
       })();
     };
-  },
-  watch: {
-    screenWidth() {
-      this.autoScreen();
-    }
   },
   methods: {
     retract() {

@@ -1,6 +1,6 @@
 <template>
   <el-main id="chainwon-content">
-    <el-row :gutter="20">
+    <el-row :gutter="gutter">
       <ProjectBox></ProjectBox>
     </el-row>
   </el-main>
@@ -11,28 +11,34 @@ import ProjectBox from "@/components/ProjectBox";
 
 export default {
   name: "Navigation",
-  component: {
-      ProjectBox
+  components: {
+    ProjectBox
+  },
+  data() {
+    return {
+      gutter: 20,
+      screenWidth: document.body.clientWidth
+    }
+  },
+  created() {
+    this.autoScreen();
+  },
+  mounted() {
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth;
+        this.autoScreen();
+      })();
+    };
+  },
+  methods: {
+    autoScreen() {
+      if (this.screenWidth <= 768) {
+        this.gutter = 10;
+      } else {
+        this.gutter = 20;
+      }
+    }
   }
 };
 </script>
-
-<style>
-.el-col {
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-.bg-purple-dark {
-  background: #99a9bf;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 286px;
-}
-</style>

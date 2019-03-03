@@ -86,6 +86,19 @@ export default {
 </script>
 
 <style>
+.el-form-item__label {
+  align-items: center;
+  flex: auto;
+  color: #000 !important;
+  text-align: left !important;
+}
+</style>
+
+<style scoped>
+.el-select {
+  width: 100px;
+  background-color: #f1f3f4;
+}
 .el-input {
   margin-bottom: 10px;
 }
@@ -94,6 +107,13 @@ export default {
 }
 .el-select > .el-input {
   margin-bottom: 0;
+}
+.el-form {
+  width: 100%;
+}
+.el-form-item {
+  margin-bottom: 0 !important;
+  display: flex;
 }
 #chainwon-content .setting-box .chainwon-setting-box-header {
   height: 64px;
@@ -104,19 +124,6 @@ export default {
 #chainwon-content .setting-box .chainwon-setting-box-content {
   padding: 24px;
   padding-top: 0;
-}
-#chainwon-content .setting-box .el-form {
-  width: 100%;
-}
-#chainwon-content .setting-box .el-form-item {
-  margin-bottom: 0 !important;
-  display: flex;
-}
-#chainwon-content .setting-box .el-form-item__label {
-  align-items: center;
-  flex: auto;
-  color: #000 !important;
-  text-align: left !important;
 }
 #chainwon-content .setting-box p {
   font-size: 0.9em;

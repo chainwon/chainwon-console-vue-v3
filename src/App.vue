@@ -26,7 +26,7 @@ export default {
 import router from "./router";
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
-    var title = to.meta.title + ' - 控制台 - 轻惋导航';
+    var title = to.meta.title + " - 控制台 - 轻惋导航";
     document.title = title;
   }
 
@@ -55,9 +55,16 @@ body {
   background-color: #f3f3f3;
 }
 .chainwon-item {
-  margin-top: 0;
   margin-bottom: 20px;
   border-radius: 4px;
   background-color: #fff;
+}
+@media screen and (max-width: 768px) {
+  #chainwon-content {
+    padding: 10px;
+  }
+  .chainwon-item {
+    margin-bottom: 10px;
+  }
 }
 </style>
