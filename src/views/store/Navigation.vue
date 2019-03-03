@@ -1,9 +1,7 @@
 <template>
   <el-main id="chainwon-content">
     <el-row :gutter="gutter">
-      <ProjectBox></ProjectBox>
-      <ProjectBox></ProjectBox>
-      <ProjectBox></ProjectBox>
+      <ProjectBox v-for="item in project" :key="item.time" :item="item"></ProjectBox>
     </el-row>
   </el-main>
 </template>
@@ -19,11 +17,21 @@ export default {
   data() {
     return {
       gutter: 20,
-      screenWidth: document.body.clientWidth
-    }
+      screenWidth: document.body.clientWidth,
+      project: []
+    };
   },
   created() {
     this.autoScreen();
+    this.axios
+      .get(this.GLOBAL.API + "/view/storeNavigation")
+      .then(res => {
+        this.project = res.data;
+        console.log(res.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   },
   mounted() {
     window.onresize = () => {
@@ -46,5 +54,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

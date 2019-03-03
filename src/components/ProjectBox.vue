@@ -1,17 +1,14 @@
 <template>
   <el-col :xs="12" :sm="8" :md="6" :lg="4" :xl="3">
     <div class="chainwon-item chainwon-project-box">
-      <div
-        class="chainwon-background"
-        style="background-image:url(https://i.loli.net/2018/02/13/5a8302bdbadaa.jpg);"
-      ></div>
+      <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
       <div class="chainwon-logo">
-        <a class="mdui-ripple" href="https://dribbble.com/" target="_blank">
-          <img src="https://cdn.chainwon.com/img/logo/ff47f9651415348db340447b0cf4898e.png">
+        <a class="mdui-ripple" :href="item.site" target="_blank">
+          <img :src="item.logo">
         </a>
       </div>
-      <div class="chainwon-title">Dribbble</div>
-      <div class="chainwon-des">Dribbble 是设计师获得灵感，反馈，社区和工作的地方，也是您发现全球设计师并与之联系的最佳方式。</div>
+      <div class="chainwon-title">{{item.name}}</div>
+      <div class="chainwon-des">{{item.intro}}</div>
       <el-button type="primary" size="mini">添加</el-button>
     </div>
   </el-col>
@@ -19,7 +16,8 @@
 
 <script>
 export default {
-  name: "ProjectBox"
+  name: "ProjectBox",
+  props: ["item"]
 };
 </script>
 
