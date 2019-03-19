@@ -4,9 +4,13 @@
       <div class="chainwon-setting-box-header">
         <el-form>
           <el-form-item label="搜索引擎" prop="region">
-            <el-select placeholder="选择">
-              <el-option label="区域一" value="shanghai"></el-option>
-              <el-option label="区域二" value="beijing"></el-option>
+            <el-select v-model="form.search" placeholder="选择">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -16,7 +20,7 @@
       <div class="chainwon-setting-box-header">你的个人网址链接</div>
       <div class="chainwon-setting-box-content">
         <el-form>
-          <el-input></el-input>
+          <el-input v-model="form.url"></el-input>
         </el-form>
       </div>
     </div>
@@ -26,13 +30,13 @@
         <p>你可以使用奇♂怪的操作，比如 Function Twelve (12)</p>
         <el-form>
           <el-form-item label="以最新收录排序">
-            <el-switch></el-switch>
+            <el-switch :active-value="1" :inactive-value="0" v-model="form.newest"></el-switch>
           </el-form-item>
           <el-form-item label="展示未审核内容">
-            <el-switch disabled></el-switch>
+            <el-switch :active-value="1" :inactive-value="0" v-model="form.unaudited" disabled></el-switch>
           </el-form-item>
           <el-form-item label="展示封禁（18×）内容">
-            <el-switch disabled></el-switch>
+            <el-switch :active-value="1" :inactive-value="0" v-model="form.ban" disabled></el-switch>
           </el-form-item>
         </el-form>
       </div>
@@ -42,7 +46,7 @@
       <div class="chainwon-setting-box-content">
         <el-form>
           <el-form-item label="收看广告（唯一收入来源）">
-            <el-switch></el-switch>
+            <el-switch :active-value="1" :inactive-value="0" v-model="form.appearad"></el-switch>
           </el-form-item>
         </el-form>
       </div>
@@ -70,18 +74,51 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   name: "SettingIndex",
   data() {
     return {
+      options: [
+        {
+          value: "选项1",
+          label: "黄金糕"
+        },
+        {
+          value: "选项2",
+          label: "双皮奶"
+        },
+        {
+          value: "选项3",
+          label: "蚵仔煎"
+        },
+        {
+          value: "选项4",
+          label: "龙须面"
+        },
+        {
+          value: "选项5",
+          label: "北京烤鸭"
+        }
+      ],
       form: {
+        search: "",
+        url: "url",
+        newest: 1,
+        unaudited: 0,
+        ban: 1,
+        appearad: 1,
         css: ""
       }
     };
   },
-  components: {}
+  watch: {
+    form: {
+      handler() {
+        console.log(this.form); //但是这两个值打印出来却都是一样的
+      },
+      deep: true
+    }
+  }
 };
 </script>
 
