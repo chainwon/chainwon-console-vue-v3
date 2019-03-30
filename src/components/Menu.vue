@@ -34,11 +34,6 @@
         <i class="iconfont icon-info-circle-fill"></i>
         <span slot="title">关于本站</span>
       </el-menu-item>
-      <el-menu-item :index="false" class="chainwon-retract" @click="retract()">
-        <i class="iconfont icon-outdent" v-if="!isCollapse"></i>
-        <i class="iconfont icon-indent" v-if="isCollapse"></i>
-        <span slot="title">收起菜单</span>
-      </el-menu-item>
     </el-menu>
   </el-aside>
 </template>
@@ -48,11 +43,11 @@ export default {
   name: "Menu",
   data() {
     return {
-      isCollapse: false,
       width: "240px",
       screenWidth: document.body.clientWidth // 这里是给到了一个默认值 （这个很重要）
     };
   },
+  props: ["isCollapse"],
   created() {
     this.autoScreen();
   },
@@ -64,16 +59,16 @@ export default {
       })();
     };
   },
-  methods: {
-    retract() {
-      if (this.isCollapse) {
-        this.isCollapse = false;
+  watch: {
+    isCollapse: function() {
+      if (!this.isCollapse) {
         this.width = "240px";
       } else {
-        this.isCollapse = true;
         this.width = "65px";
       }
-    },
+    }
+  },
+  methods: {
     autoScreen() {
       if (this.screenWidth < 1280) {
         this.isCollapse = true;

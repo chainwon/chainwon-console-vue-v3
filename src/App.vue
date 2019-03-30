@@ -1,9 +1,11 @@
 <template>
   <el-container id="app">
+    <Menu :isCollapse="isCollapse"/>
     <el-container class="is-vertical">
-      <Header/>
-          <Menu/>
-
+      <el-header id="chainwon-header">
+        <el-button @click="retract()" icon="iconfont icon-menu" circle></el-button>
+        {{ title }}
+      </el-header>
       <keep-alive>
         <router-view v-if="$route.meta.keepAlive"/>
       </keep-alive>
@@ -14,13 +16,31 @@
 
 <script>
 import Menu from "./components/Menu.vue";
-import Header from "./components/Header.vue";
 
 export default {
   name: "app",
   components: {
-    Menu,
-    Header
+    Menu
+  },
+  data() {
+    return {
+      title: this.$route.meta.title,
+      isCollapse: false
+    };
+  },
+  methods: {
+    retract() {
+      if (this.isCollapse) {
+        this.isCollapse = false;
+      } else {
+        this.isCollapse = true;
+      }
+    }
+  },
+  watch: {
+    $route(to, from) {
+      this.title = to.meta.title;
+    }
   }
 };
 
@@ -65,6 +85,14 @@ body {
 }
 .chainwon-box p {
   margin: 20px 0;
+}
+#chainwon-header {
+  background-color: #fff;
+  line-height: 60px;
+}
+.el-button.is-circle {
+  border: none;
+  margin-right: 10px;
 }
 @media screen and (max-width: 768px) {
   #chainwon-content {
