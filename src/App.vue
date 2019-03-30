@@ -1,8 +1,9 @@
 <template>
   <el-container id="app">
-    <Menu/>
     <el-container class="is-vertical">
       <Header/>
+          <Menu/>
+
       <keep-alive>
         <router-view v-if="$route.meta.keepAlive"/>
       </keep-alive>
