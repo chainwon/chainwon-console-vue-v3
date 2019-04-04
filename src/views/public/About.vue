@@ -26,6 +26,10 @@ export default {
     return {
       activities: [
         {
+          content: "适配2K分辨率屏幕",
+          timestamp: "2019-04-05"
+        },
+        {
           content: "控制台基于 Vue 重写",
           timestamp: "2019-03-03"
         },

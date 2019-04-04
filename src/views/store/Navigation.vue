@@ -18,16 +18,18 @@ export default {
     return {
       gutter: 20,
       screenWidth: document.body.clientWidth,
+      page: 1,
       project: []
     };
   },
   created() {
     this.autoScreen();
     this.axios
-      .get(this.GLOBAL.API + "/view/storeNavigation")
+      .post("/view/storeNavigation", {
+        page: this.page
+      })
       .then(res => {
         this.project = res.data;
-        console.log(res.data);
       })
       .catch(function(error) {
         console.log(error);
