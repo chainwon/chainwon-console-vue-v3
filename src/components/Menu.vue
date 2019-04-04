@@ -1,5 +1,5 @@
 <template>
-  <el-aside :width="width" id="chainwon-menu" style="background-color:#545c64;min-height: 100vh;">
+  <el-aside id="chainwon-menu" v-bind:class="{ iscollapse: isCollapse }" style="background-color:#545c64;min-height: 100vh;">
     <el-menu
       background-color="#545c64"
       text-color="#fff"
@@ -43,12 +43,12 @@ export default {
   name: "Menu",
   data() {
     return {
-      width: "240px",
       screenWidth: document.body.clientWidth // 这里是给到了一个默认值 （这个很重要）
     };
   },
   props: ["isCollapse"],
   created() {
+    console.log(this.isCollapse)
     this.autoScreen();
   },
   mounted() {
@@ -59,25 +59,12 @@ export default {
       })();
     };
   },
-  watch: {
-    isCollapse: function() {
-      if (!this.isCollapse) {
-        this.width = "240px";
-        this.isCollapse = false;
-      } else {
-        this.width = "65px";
-        this.isCollapse = true;
-      }
-    }
-  },
   methods: {
     autoScreen() {
       if (this.screenWidth < 1280) {
         this.isCollapse = true;
-        this.width = "65px";
       } else {
         this.isCollapse = false;
-        this.width = "240px";
       }
     }
   }
@@ -87,8 +74,12 @@ export default {
 <style scoped>
 .el-aside {
   overflow: hidden;
+  width: 240px!important;
 }
 
+.el-aside.iscollapse {
+  width: 70px!important;;  
+}
 .el-menu-item.is-active {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.1) !important;
