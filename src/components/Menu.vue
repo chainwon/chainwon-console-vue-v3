@@ -63,8 +63,10 @@ export default {
     isCollapse: function() {
       if (!this.isCollapse) {
         this.width = "240px";
+        this.isCollapse = false;
       } else {
         this.width = "65px";
+        this.isCollapse = true;
       }
     }
   },
@@ -83,6 +85,10 @@ export default {
 </script>
 
 <style scoped>
+.el-aside {
+  overflow: hidden;
+}
+
 .el-menu-item.is-active {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.1) !important;
