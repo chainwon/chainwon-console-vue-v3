@@ -25,7 +25,7 @@ export default {
   created() {
     this.autoScreen();
     this.axios
-      .post("/view/storeNavigation", {
+      .post("/api/view/storeNavigation", {
         page: this.page
       })
       .then(res => {

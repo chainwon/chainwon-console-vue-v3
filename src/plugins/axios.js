@@ -60,5 +60,4 @@ Vue.use(Plugin)
 
 export default Plugin;
 
-axios.defaults.baseURL = '/api'
 axios.defaults.headers.post['Content-Type'] = 'application/json';
