@@ -4,7 +4,7 @@
       <div class="chainwon-submit">
         <el-upload
           class="chainwon-upload"
-          :action="this.GLOBAL.API + '/controller/picupload'"
+          :action="'api/controller/picupload'"
           accept="image/*"
           :before-upload="beforeAvatarUpload"
           :on-success="handleAvatarSuccess"

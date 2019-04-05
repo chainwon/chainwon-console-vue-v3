@@ -482,7 +482,7 @@
       border-color: #C0C4CC; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #f4696a; }
+      border-color: #ff6473; }
   .el-textarea.is-disabled .el-textarea__inner {
     background-color: #f5f7fa;
     border-color: #E4E7ED;
@@ -553,7 +553,7 @@
       border-color: #C0C4CC; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #f4696a; }
+      border-color: #ff6473; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -592,7 +592,7 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #f4696a; }
+    border-color: #ff6473; }
   .el-input.is-disabled .el-input__inner {
     background-color: #f5f7fa;
     border-color: #E4E7ED;
@@ -1061,12 +1061,12 @@
   .el-button.is-round {
     padding: 12px 20px; }
   .el-button:hover, .el-button:focus {
-    color: #f4696a;
-    border-color: #fcd2d2;
-    background-color: #fef0f0; }
+    color: #ff6473;
+    border-color: #ffd1d5;
+    background-color: #fff0f1; }
   .el-button:active {
-    color: #dc5f5f;
-    border-color: #dc5f5f;
+    color: #e65a68;
+    border-color: #e65a68;
     outline: none; }
   .el-button::-moz-focus-inner {
     border: 0; }
@@ -1074,16 +1074,16 @@
     margin-left: 5px; }
   .el-button.is-plain:hover, .el-button.is-plain:focus {
     background: #FFFFFF;
-    border-color: #f4696a;
-    color: #f4696a; }
+    border-color: #ff6473;
+    color: #ff6473; }
   .el-button.is-plain:active {
     background: #FFFFFF;
-    border-color: #dc5f5f;
-    color: #dc5f5f;
+    border-color: #e65a68;
+    color: #e65a68;
     outline: none; }
   .el-button.is-active {
-    color: #dc5f5f;
-    border-color: #dc5f5f; }
+    color: #e65a68;
+    border-color: #e65a68; }
   .el-button.is-disabled, .el-button.is-disabled:hover, .el-button.is-disabled:focus {
     color: #C0C4CC;
     cursor: not-allowed;
@@ -1117,42 +1117,42 @@
     padding: 12px; }
   .el-button--primary {
     color: #FFFFFF;
-    background-color: #f4696a;
-    border-color: #f4696a; }
+    background-color: #ff6473;
+    border-color: #ff6473; }
     .el-button--primary:hover, .el-button--primary:focus {
-      background: #f68788;
-      border-color: #f68788;
+      background: #ff838f;
+      border-color: #ff838f;
       color: #FFFFFF; }
     .el-button--primary:active {
-      background: #dc5f5f;
-      border-color: #dc5f5f;
+      background: #e65a68;
+      border-color: #e65a68;
       color: #FFFFFF;
       outline: none; }
     .el-button--primary.is-active {
-      background: #dc5f5f;
-      border-color: #dc5f5f;
+      background: #e65a68;
+      border-color: #e65a68;
       color: #FFFFFF; }
     .el-button--primary.is-disabled, .el-button--primary.is-disabled:hover, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:active {
       color: #FFFFFF;
-      background-color: #fab4b5;
-      border-color: #fab4b5; }
+      background-color: #ffb2b9;
+      border-color: #ffb2b9; }
     .el-button--primary.is-plain {
-      color: #f4696a;
-      background: #fef0f0;
-      border-color: #fbc3c3; }
+      color: #ff6473;
+      background: #fff0f1;
+      border-color: #ffc1c7; }
       .el-button--primary.is-plain:hover, .el-button--primary.is-plain:focus {
-        background: #f4696a;
-        border-color: #f4696a;
+        background: #ff6473;
+        border-color: #ff6473;
         color: #FFFFFF; }
       .el-button--primary.is-plain:active {
-        background: #dc5f5f;
-        border-color: #dc5f5f;
+        background: #e65a68;
+        border-color: #e65a68;
         color: #FFFFFF;
         outline: none; }
       .el-button--primary.is-plain.is-disabled, .el-button--primary.is-plain.is-disabled:hover, .el-button--primary.is-plain.is-disabled:focus, .el-button--primary.is-plain.is-disabled:active {
-        color: #f8a5a6;
-        background-color: #fef0f0;
-        border-color: #fde1e1; }
+        color: #ffa2ab;
+        background-color: #fff0f1;
+        border-color: #ffe0e3; }
   .el-button--success {
     color: #FFFFFF;
     background-color: #67C23A;
@@ -1331,16 +1331,16 @@
       padding: 7px; }
   .el-button--text {
     border-color: transparent;
-    color: #f4696a;
+    color: #ff6473;
     background: transparent;
     padding-left: 0;
     padding-right: 0; }
     .el-button--text:hover, .el-button--text:focus {
-      color: #f68788;
+      color: #ff838f;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text:active {
-      color: #dc5f5f;
+      color: #e65a68;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text.is-disabled, .el-button--text.is-disabled:hover, .el-button--text.is-disabled:focus {
@@ -1781,7 +1781,7 @@
     line-height: normal;
     height: 40px; }
     .el-checkbox.is-bordered.is-checked {
-      border-color: #f4696a; }
+      border-color: #ff6473; }
     .el-checkbox.is-bordered.is-disabled {
       border-color: #EBEEF5;
       cursor: not-allowed; }
@@ -1855,20 +1855,20 @@
       color: #C0C4CC;
       cursor: not-allowed; }
     .el-checkbox__input.is-checked .el-checkbox__inner {
-      background-color: #f4696a;
-      border-color: #f4696a; }
+      background-color: #ff6473;
+      border-color: #ff6473; }
       .el-checkbox__input.is-checked .el-checkbox__inner::after {
         -webkit-transform: rotate(45deg) scaleY(1);
         transform: rotate(45deg) scaleY(1); }
     .el-checkbox__input.is-checked + .el-checkbox__label {
-      color: #f4696a; }
+      color: #ff6473; }
     .el-checkbox__input.is-focus {
       /*focus时 视觉上区分*/ }
       .el-checkbox__input.is-focus .el-checkbox__inner {
-        border-color: #f4696a; }
+        border-color: #ff6473; }
     .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-      background-color: #f4696a;
-      border-color: #f4696a; }
+      background-color: #ff6473;
+      border-color: #ff6473; }
       .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
         content: '';
         position: absolute;
@@ -1896,7 +1896,7 @@
     -webkit-transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46), background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
     transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46), background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46); }
     .el-checkbox__inner:hover {
-      border-color: #f4696a; }
+      border-color: #ff6473; }
     .el-checkbox__inner::after {
       -webkit-box-sizing: content-box;
       box-sizing: content-box;
@@ -1965,7 +1965,7 @@
     .el-checkbox-button__inner.is-round {
       padding: 12px 20px; }
     .el-checkbox-button__inner:hover {
-      color: #f4696a; }
+      color: #ff6473; }
     .el-checkbox-button__inner [class*="el-icon-"] {
       line-height: 0.9; }
       .el-checkbox-button__inner [class*="el-icon-"] + span {
@@ -1978,12 +1978,12 @@
     z-index: -1; }
   .el-checkbox-button.is-checked .el-checkbox-button__inner {
     color: #FFFFFF;
-    background-color: #f4696a;
-    border-color: #f4696a;
-    -webkit-box-shadow: -1px 0 0 0 #f8a5a6;
-    box-shadow: -1px 0 0 0 #f8a5a6; }
+    background-color: #ff6473;
+    border-color: #ff6473;
+    -webkit-box-shadow: -1px 0 0 0 #ffa2ab;
+    box-shadow: -1px 0 0 0 #ffa2ab; }
   .el-checkbox-button.is-checked:first-child .el-checkbox-button__inner {
-    border-left-color: #f4696a; }
+    border-left-color: #ff6473; }
   .el-checkbox-button.is-disabled .el-checkbox-button__inner {
     color: #C0C4CC;
     cursor: not-allowed;
@@ -2000,7 +2000,7 @@
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }
   .el-checkbox-button.is-focus .el-checkbox-button__inner {
-    border-color: #f4696a; }
+    border-color: #ff6473; }
   .el-checkbox-button:last-child .el-checkbox-button__inner {
     border-radius: 0 4px 4px 0; }
   .el-checkbox-button--medium .el-checkbox-button__inner {
@@ -2037,7 +2037,7 @@
     padding: 10px;
     border-radius: 50%;
     color: #FFFFFF;
-    background-color: #f4696a;
+    background-color: #ff6473;
     font-size: 0; }
     .el-transfer__button.is-with-texts {
       border-radius: 4px; }
@@ -2095,7 +2095,7 @@
     .el-transfer-panel__item.el-checkbox {
       color: #606266; }
     .el-transfer-panel__item:hover {
-      color: #f4696a; }
+      color: #ff6473; }
     .el-transfer-panel__item.el-checkbox .el-checkbox__label {
       width: 100%;
       overflow: hidden;

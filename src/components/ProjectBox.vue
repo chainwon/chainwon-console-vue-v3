@@ -9,7 +9,7 @@
       </div>
       <div class="chainwon-title">{{item.name}}</div>
       <div class="chainwon-des">{{item.intro}}</div>
-      <el-button type="primary" size="mini">添加</el-button>
+      <el-button type="primary" size="mini" plain>添加</el-button>
     </div>
   </el-col>
 </template>

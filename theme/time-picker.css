@@ -520,9 +520,9 @@
   line-height: 1; }
 
 .el-range-editor.is-active {
-  border-color: #f4696a; }
+  border-color: #ff6473; }
   .el-range-editor.is-active:hover {
-    border-color: #f4696a; }
+    border-color: #ff6473; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -730,10 +730,10 @@
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #f4696a; }
+      color: #ff6473; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #f4696a; }
+      color: #ff6473; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -756,7 +756,7 @@
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #f4696a; }
+      color: #ff6473; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -925,7 +925,7 @@
   line-height: 30px;
   cursor: pointer; }
   .el-time-spinner__arrow:hover {
-    color: #f4696a; }
+    color: #ff6473; }
   .el-time-spinner__arrow.el-icon-arrow-up {
     top: 10px; }
   .el-time-spinner__arrow.el-icon-arrow-down {
@@ -1139,7 +1139,7 @@
     color: #303133; }
     .el-time-panel__btn.confirm {
       font-weight: 800;
-      color: #f4696a; }
+      color: #ff6473; }
 
 /* Element Chalk Variables */
 /* Transition
@@ -1528,7 +1528,7 @@
       border-color: #C0C4CC; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #f4696a; }
+      border-color: #ff6473; }
   .el-textarea.is-disabled .el-textarea__inner {
     background-color: #f5f7fa;
     border-color: #E4E7ED;
@@ -1599,7 +1599,7 @@
       border-color: #C0C4CC; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #f4696a; }
+      border-color: #ff6473; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -1638,7 +1638,7 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #f4696a; }
+    border-color: #ff6473; }
   .el-input.is-disabled .el-input__inner {
     background-color: #f5f7fa;
     border-color: #E4E7ED;

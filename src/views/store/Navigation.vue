@@ -1,24 +1,37 @@
 <template>
   <el-main id="chainwon-content">
-    <el-row :gutter="gutter">
-      <ProjectBox v-for="item in project" :key="item.time" :item="item"></ProjectBox>
+    <el-row
+      :gutter="gutter"
+    >
+      <div
+        v-infinite-scroll="loadMore"
+        infinite-scroll-disabled="busy"
+        infinite-scroll-distance="10"
+      >
+        <ProjectBox v-for="item in project" :key="item.time" :item="item"></ProjectBox>
+      </div>
     </el-row>
+    <Loading v-if="loading"/>
   </el-main>
 </template>
 
 <script>
 import ProjectBox from "@/components/ProjectBox";
+import Loading from "@/components/Loading";
 
 export default {
   name: "Navigation",
   components: {
-    ProjectBox
+    ProjectBox,
+    Loading
   },
   data() {
     return {
       gutter: 20,
       screenWidth: document.body.clientWidth,
       page: 1,
+      busy: false,
+      loading: true,
       project: []
     };
   },
@@ -50,6 +63,25 @@ export default {
       } else {
         this.gutter = 20;
       }
+    },
+    loadMore: function() {
+      this.busy = true;
+      this.loading = true;
+      this.page++;
+      this.axios
+        .post("/api/view/storeNavigation", {
+          page: this.page
+        })
+        .then(res => {
+          if (res.data.length > 0) {
+            this.project = this.project.concat(res.data);
+            this.busy = false;
+          }
+          this.loading = false;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };

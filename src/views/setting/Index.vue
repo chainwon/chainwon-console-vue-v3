@@ -30,13 +30,13 @@
         <p>你可以使用奇♂怪的操作，比如 Function Twelve (12)</p>
         <el-form>
           <el-form-item label="以最新收录排序">
-            <el-switch :active-value="1" :inactive-value="0" v-model="form.newest"></el-switch>
+            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.newest"></el-switch>
           </el-form-item>
           <el-form-item label="展示未审核内容">
-            <el-switch :active-value="1" :inactive-value="0" v-model="form.unaudited" disabled></el-switch>
+            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.unaudited" disabled></el-switch>
           </el-form-item>
           <el-form-item label="展示封禁（18×）内容">
-            <el-switch :active-value="1" :inactive-value="0" v-model="form.ban" disabled></el-switch>
+            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.ban" disabled></el-switch>
           </el-form-item>
         </el-form>
       </div>
@@ -46,7 +46,7 @@
       <div class="chainwon-setting-box-content">
         <el-form>
           <el-form-item label="收看广告（唯一收入来源）">
-            <el-switch :active-value="1" :inactive-value="0" v-model="form.appearad"></el-switch>
+            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.appearad"></el-switch>
           </el-form-item>
         </el-form>
       </div>
@@ -55,10 +55,10 @@
       <div class="chainwon-setting-box-header">倒计时</div>
       <div class="chainwon-setting-box-content">
         <el-form>
-          <el-input></el-input>
-          <el-input></el-input>
-          <el-input></el-input>
-          <el-input></el-input>
+          <el-input v-model="form.countdown_name" placeholder="事件名称"></el-input>
+          <el-input v-model="form.countdown.year" placeholder="年"></el-input>
+          <el-input v-model="form.countdown.month" placeholder="月"></el-input>
+          <el-input v-model="form.countdown.day" placeholder="日"></el-input>
         </el-form>
       </div>
     </div>
@@ -80,28 +80,28 @@ export default {
     return {
       options: [
         {
-          value: "选项1",
-          label: "黄金糕"
+          value: "谷歌",
+          label: "谷歌"
         },
         {
-          value: "选项2",
-          label: "双皮奶"
+          value: "百度",
+          label: "百度"
         },
         {
-          value: "选项3",
-          label: "蚵仔煎"
+          value: "360",
+          label: "360"
         },
         {
-          value: "选项4",
-          label: "龙须面"
+          value: "国搜",
+          label: "国搜"
         },
         {
-          value: "选项5",
-          label: "北京烤鸭"
+          value: "必应",
+          label: "必应"
         }
       ],
       form: {
-        search: "",
+        search: "百度",
         url: "url",
         newest: 1,
         unaudited: 0,
@@ -110,6 +110,18 @@ export default {
         css: ""
       }
     };
+  },
+  created() {
+    this.axios
+      .post("/api/view/settingIndex", {
+        page: this.page
+      })
+      .then(res => {
+        this.form = res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   },
   watch: {
     form: {
@@ -133,7 +145,7 @@ export default {
 
 <style scoped>
 .el-select {
-  width: 100px;
+  width: 85px;
   background-color: #f1f3f4;
 }
 .el-input {
