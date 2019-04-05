@@ -89,10 +89,15 @@ body {
 #chainwon-header {
   background-color: #fff;
   line-height: 60px;
+  border-bottom: 1px solid #eee;
 }
 .el-button.is-circle {
   border: none;
   margin-right: 10px;
+}
+.el-main {
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 @media screen and (max-width: 768px) {
   #chainwon-content {
