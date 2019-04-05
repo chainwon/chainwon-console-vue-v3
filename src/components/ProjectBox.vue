@@ -1,23 +1,51 @@
 <template>
-  <el-col :xs="12" :sm="8" :md="6" :lg="4" :xl="3">
-    <div class="chainwon-item chainwon-project-box">
-      <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
-      <div class="chainwon-logo">
-        <a class="mdui-ripple" :href="item.site" target="_blank">
-          <img :src="item.logo">
-        </a>
+  <el-row :gutter="gutter">
+    <el-col :xs="12" :sm="8" :md="6" :lg="4" :xl="3" v-for="item in project" :key="item.time">
+      <div class="chainwon-item chainwon-project-box">
+        <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
+        <div class="chainwon-logo">
+          <a class="mdui-ripple" :href="item.site" target="_blank">
+            <img :src="item.logo">
+          </a>
+        </div>
+        <div class="chainwon-title">{{item.name}}</div>
+        <div class="chainwon-des">{{item.intro}}</div>
+        <el-button type="primary" size="mini" plain>添加</el-button>
       </div>
-      <div class="chainwon-title">{{item.name}}</div>
-      <div class="chainwon-des">{{item.intro}}</div>
-      <el-button type="primary" size="mini" plain>添加</el-button>
-    </div>
-  </el-col>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
 export default {
   name: "ProjectBox",
-  props: ["item"]
+  props: ["project"],
+  data() {
+    return {
+      gutter: 20,
+      screenWidth: document.body.clientWidth
+    };
+  },
+  created() {
+    this.autoScreen();
+  },
+  mounted() {
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth;
+        this.autoScreen();
+      })();
+    };
+  },
+  methods: {
+    autoScreen() {
+      if (this.screenWidth <= 768) {
+        this.gutter = 10;
+      } else {
+        this.gutter = 20;
+      }
+    }
+  }
 };
 </script>
 

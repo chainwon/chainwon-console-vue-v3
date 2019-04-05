@@ -1,13 +1,11 @@
 <template>
   <el-main id="chainwon-content">
-    <el-row
-      :gutter="gutter"
+    <ProjectBox
       v-infinite-scroll="loadMore"
-        infinite-scroll-disabled="busy"
-        infinite-scroll-distance="10"
-    >
-        <ProjectBox v-for="item in project" :key="item.time" :item="item"></ProjectBox>
-    </el-row>
+      infinite-scroll-disabled="busy"
+      infinite-scroll-distance="10"
+      :project="project"
+    ></ProjectBox>
     <Loading v-if="loading"/>
   </el-main>
 </template>
@@ -24,8 +22,6 @@ export default {
   },
   data() {
     return {
-      gutter: 20,
-      screenWidth: document.body.clientWidth,
       page: 1,
       busy: false,
       loading: false,
@@ -33,7 +29,6 @@ export default {
     };
   },
   created() {
-    this.autoScreen();
     this.axios
       .post("/api/view/storeNavigation", {
         page: this.page
@@ -45,22 +40,7 @@ export default {
         console.log(error);
       });
   },
-  mounted() {
-    window.onresize = () => {
-      return (() => {
-        this.screenWidth = document.body.clientWidth;
-        this.autoScreen();
-      })();
-    };
-  },
   methods: {
-    autoScreen() {
-      if (this.screenWidth <= 768) {
-        this.gutter = 10;
-      } else {
-        this.gutter = 20;
-      }
-    },
     loadMore: function() {
       this.busy = true;
       this.loading = true;
@@ -83,7 +63,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-
-</style>

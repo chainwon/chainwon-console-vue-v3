@@ -1,8 +1,8 @@
 <template>
   <el-main id="chainwon-content">
-    <el-row :gutter="gutter">
-      <ProjectBox></ProjectBox>
-    </el-row>
+    <ProjectBox
+      :project="project"
+    ></ProjectBox>
   </el-main>
 </template>
 
@@ -16,29 +16,20 @@ export default {
   },
   data() {
     return {
-      gutter: 20,
-      screenWidth: document.body.clientWidth
-    }
-  },
-  created() {
-    this.autoScreen();
-  },
-  mounted() {
-    window.onresize = () => {
-      return (() => {
-        this.screenWidth = document.body.clientWidth;
-        this.autoScreen();
-      })();
+      project: []
     };
   },
-  methods: {
-    autoScreen() {
-      if (this.screenWidth <= 768) {
-        this.gutter = 10;
-      } else {
-        this.gutter = 20;
-      }
-    }
+  created() {
+    this.axios
+      .post("/api/view/settingNavigation", {
+        page: this.page
+      })
+      .then(res => {
+        this.project = res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 </script>
