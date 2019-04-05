@@ -2,14 +2,11 @@
   <el-main id="chainwon-content">
     <el-row
       :gutter="gutter"
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="busy"
+      infinite-scroll-distance="10"
     >
-      <div
-        v-infinite-scroll="loadMore"
-        infinite-scroll-disabled="busy"
-        infinite-scroll-distance="10"
-      >
-        <ProjectBox v-for="item in project" :key="item.time" :item="item"></ProjectBox>
-      </div>
+      <ProjectBox v-for="item in project" :key="item.time" :item="item"></ProjectBox>
     </el-row>
     <Loading v-if="loading"/>
   </el-main>
@@ -31,18 +28,20 @@ export default {
       screenWidth: document.body.clientWidth,
       page: 1,
       busy: false,
-      loading: true,
+      loading: false,
       project: []
     };
   },
   created() {
     this.autoScreen();
+    this.loading = true;
     this.axios
       .post("/api/view/storeNavigation", {
         page: this.page
       })
       .then(res => {
         this.project = res.data;
+        this.loading = false;
       })
       .catch(function(error) {
         console.log(error);
@@ -65,23 +64,7 @@ export default {
       }
     },
     loadMore: function() {
-      this.busy = true;
-      this.loading = true;
-      this.page++;
-      this.axios
-        .post("/api/view/storeNavigation", {
-          page: this.page
-        })
-        .then(res => {
-          if (res.data.length > 0) {
-            this.project = this.project.concat(res.data);
-            this.busy = false;
-          }
-          this.loading = false;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      
     }
   }
 };
