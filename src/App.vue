@@ -25,8 +25,22 @@ export default {
   data() {
     return {
       title: this.$route.meta.title,
-      isCollapse: false
+      isCollapse: false,
+      user: []
     };
+  },
+  created() {
+    this.axios
+      .post("/api/view/user")
+      .then(res => {
+        this.user = res.data;
+        if(this.user.uid==0){
+          window.location.href="https://account.mixcm.com" 
+        }
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   },
   methods: {
     retract() {

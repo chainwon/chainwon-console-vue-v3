@@ -5,12 +5,7 @@
         <el-form>
           <el-form-item label="搜索引擎" prop="region">
             <el-select v-model="form.search" placeholder="选择">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -74,110 +69,158 @@
 </template>
 
 <script>
-export default {
-  name: "SettingIndex",
-  data() {
-    return {
-      options: [
-        {
-          value: "谷歌",
-          label: "谷歌"
-        },
-        {
-          value: "百度",
-          label: "百度"
-        },
-        {
-          value: "360",
-          label: "360"
-        },
-        {
-          value: "国搜",
-          label: "国搜"
-        },
-        {
-          value: "必应",
-          label: "必应"
+  export default {
+    name: "SettingIndex",
+    data() {
+      return {
+        change: 0,
+        options: [{
+            value: "谷歌",
+            label: "谷歌"
+          },
+          {
+            value: "百度",
+            label: "百度"
+          },
+          {
+            value: "360",
+            label: "360"
+          },
+          {
+            value: "国搜",
+            label: "国搜"
+          },
+          {
+            value: "必应",
+            label: "必应"
+          }
+        ],
+        form: {
+          search: "百度",
+          url: "url",
+          newest: 1,
+          unaudited: 0,
+          ban: 1,
+          appearad: 1,
+          css: "",
+          countdown_name: "",
+          countdown: {
+            year: "",
+            month: "",
+            day: ""
+          }
         }
-      ],
-      form: {
-        search: "百度",
-        url: "url",
-        newest: 1,
-        unaudited: 0,
-        ban: 1,
-        appearad: 1,
-        css: ""
+      };
+    },
+    created() {
+      this.axios
+        .post("/api/view/settingIndex")
+        .then(res => {
+          this.form = res.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    beforeRouteLeave(to, from, next) {
+      if(this.change > 2){
+        const answer = window.confirm('你有设置没有保存，是否保存？')
+        if (answer) {
+          this.axios
+            .post("/api/controller/saveSetting", {
+              form: this.form
+            })
+            .then(res => {
+             if(res.data.state==1){
+                this.$notify({
+                  title: '成功',
+                  message: res.data.info,
+                  position: 'bottom-right',
+                  type: 'success'
+                });
+              }else{
+                this.$notify({
+                  title: '失败',
+                  message: res.data.info,
+                  position: 'bottom-right',
+                  type: 'error'
+                });
+              }
+            })
+          .catch(function(error) {
+            console.log(error);
+          });
+          next()
+        } else {
+          next(false)
+        }
+      }else{
+        next()
       }
-    };
-  },
-  created() {
-    this.axios
-      .post("/api/view/settingIndex", {
-        page: this.page
-      })
-      .then(res => {
-        this.form = res.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  },
-  watch: {
-    form: {
-      handler() {
-        console.log(this.form); //但是这两个值打印出来却都是一样的
-      },
-      deep: true
+    },
+    watch: {
+      form: {
+        handler() {
+          this.change ++;
+          console.log(this.form)
+        },
+        deep: true
+      }
     }
-  }
-};
+  };
 </script>
 
 <style>
-.el-form-item__label {
-  align-items: center;
-  flex: auto;
-  color: #000 !important;
-  text-align: left !important;
-}
+  .el-form-item__label {
+    align-items: center;
+    flex: auto;
+    color: #000 !important;
+    text-align: left !important;
+  }
 </style>
 
 <style scoped>
-.el-select {
-  width: 85px;
-  background-color: #f1f3f4;
-}
-.el-input {
-  margin-bottom: 10px;
-}
-.el-input:last-child {
-  margin-bottom: 0;
-}
-.el-select > .el-input {
-  margin-bottom: 0;
-}
-.el-form {
-  width: 100%;
-}
-.el-form-item {
-  margin-bottom: 0 !important;
-  display: flex;
-}
-#chainwon-content .setting-box .chainwon-setting-box-header {
-  height: 64px;
-  padding: 0 24px;
-  align-items: center;
-  display: flex;
-}
-#chainwon-content .setting-box .chainwon-setting-box-content {
-  padding: 24px;
-  padding-top: 0;
-}
-#chainwon-content .setting-box p {
-  font-size: 0.9em;
-  color: #f4696a;
-  margin-top: 0;
-}
-</style>
+  .el-select {
+    width: 85px;
+    background-color: #f1f3f4;
+  }
 
+  .el-input {
+    margin-bottom: 10px;
+  }
+
+  .el-input:last-child {
+    margin-bottom: 0;
+  }
+
+  .el-select>.el-input {
+    margin-bottom: 0;
+  }
+
+  .el-form {
+    width: 100%;
+  }
+
+  .el-form-item {
+    margin-bottom: 0 !important;
+    display: flex;
+  }
+
+  #chainwon-content .setting-box .chainwon-setting-box-header {
+    height: 64px;
+    padding: 0 24px;
+    align-items: center;
+    display: flex;
+  }
+
+  #chainwon-content .setting-box .chainwon-setting-box-content {
+    padding: 24px;
+    padding-top: 0;
+  }
+
+  #chainwon-content .setting-box p {
+    font-size: 0.9em;
+    color: #f4696a;
+    margin-top: 0;
+  }
+</style>

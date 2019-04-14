@@ -21,9 +21,7 @@ export default {
   },
   created() {
     this.axios
-      .post("/api/view/settingNavigation", {
-        page: this.page
-      })
+      .post("/api/view/settingNavigation")
       .then(res => {
         this.project = res.data;
       })

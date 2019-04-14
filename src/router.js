@@ -36,7 +36,7 @@ export default new Router({
       path: '/setting/index',
       component: SettingIndex,
       meta: {
-        keepAlive: true,
+        keepAlive: false,
         title: '个性设置'
       },
     },
@@ -44,7 +44,7 @@ export default new Router({
       path: '/setting/navigation',
       component: SettingNavigation,
       meta: {
-        keepAlive: true,
+        keepAlive: false,
         title: '我的网址'
       },
     },
