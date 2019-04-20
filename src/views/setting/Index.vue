@@ -162,7 +162,6 @@
       form: {
         handler() {
           this.change ++;
-          console.log(this.form)
         },
         deep: true
       }
