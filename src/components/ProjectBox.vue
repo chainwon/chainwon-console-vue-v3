@@ -10,7 +10,7 @@
         </div>
         <div class="chainwon-title">{{item.name}}</div>
         <div class="chainwon-des">{{item.intro}}</div>
-        <el-button v-if="!item.added" type="primary" @click="addNavigation(item.site_id)" size="mini" plain>添加</el-button>
+        <el-button v-if="!item.added" type="primary" @click="addNavigation(item.site_id,index)" size="mini" plain>添加</el-button>
         <el-button v-if="item.added" type="info" @click="removeNavigation(item.site_id,index)" size="mini" plain>移除</el-button>
       </div>
     </el-col>
@@ -46,13 +46,15 @@ export default {
         this.gutter = 20;
       }
     },
-    addNavigation(site_id) {
+    addNavigation(site_id,index) {
       this.axios
         .post("/api/controller/addNavigation", {
           site_id: site_id
         })
         .then(res => {
           if(res.data.state==1){
+            console.log(this.project[index])
+            this.project[index].added=true
             this.$notify({
               title: '成功',
               message: res.data.info,
@@ -80,7 +82,8 @@ export default {
         })
         .then(res => {
           if(res.data.state==1){
-            this.project.splice(index, 1);
+            this.project[index].added=false
+            // this.project.splice(index, 1);
             this.$notify({
               title: '成功',
               message: res.data.info,
