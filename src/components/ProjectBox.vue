@@ -24,7 +24,8 @@ export default {
   data() {
     return {
       gutter: 20,
-      screenWidth: document.body.clientWidth
+      screenWidth: document.body.clientWidth,
+      project: []
     };
   },
   created() {
