@@ -51,9 +51,12 @@
       <div class="chainwon-setting-box-content">
         <el-form>
           <el-input v-model="form.countdown_name" placeholder="事件名称"></el-input>
-          <el-input v-model="form.countdown.year" placeholder="年"></el-input>
-          <el-input v-model="form.countdown.month" placeholder="月"></el-input>
-          <el-input v-model="form.countdown.day" placeholder="日"></el-input>
+
+          <el-date-picker style="width:100%;"
+            v-model="form.countdown.time"
+            type="date"
+            placeholder="选择日期">
+          </el-date-picker>
         </el-form>
       </div>
     </div>
@@ -250,7 +253,7 @@
 
   #chainwon-content .setting-box p {
     font-size: 0.9em;
-    color: #f4696a;
+    color: #ff6675;
     margin-top: 0;
   }
 </style>
