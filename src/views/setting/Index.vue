@@ -65,6 +65,9 @@
         </el-form>
       </div>
     </div>
+    <div class="chainwon-save">
+      <el-button v-if="savebtn" type="primary" @click="save()" icon="icon el-icon-check" circle></el-button>
+    </div>
   </el-main>
 </template>
 
@@ -74,6 +77,7 @@
     data() {
       return {
         change: 0,
+        savebtn: false,
         options: [{
             value: "谷歌",
             label: "谷歌"
@@ -126,30 +130,7 @@
       if(this.change > 2){
         const answer = window.confirm('你有设置没有保存，是否保存？')
         if (answer) {
-          this.axios
-            .post("/api/controller/saveSetting", {
-              form: this.form
-            })
-            .then(res => {
-             if(res.data.state==1){
-                this.$notify({
-                  title: '成功',
-                  message: res.data.info,
-                  position: 'bottom-right',
-                  type: 'success'
-                });
-              }else{
-                this.$notify({
-                  title: '失败',
-                  message: res.data.info,
-                  position: 'bottom-right',
-                  type: 'error'
-                });
-              }
-            })
-          .catch(function(error) {
-            console.log(error);
-          });
+          this.save()
           next()
         } else {
           next(false)
@@ -158,10 +139,43 @@
         next()
       }
     },
+    methods: {
+      save() {
+        this.axios
+          .post("/api/controller/saveSetting", {
+            form: this.form
+          })
+          .then(res => {
+            if(res.data.state==1){
+              this.$notify({
+                title: '成功',
+                message: res.data.info,
+                position: 'bottom-right',
+                type: 'success'
+              });
+              this.change = 2
+              this.savebtn = false
+            }else{
+              this.$notify({
+                title: '失败',
+                message: res.data.info,
+                position: 'bottom-right',
+                type: 'error'
+              });
+            }
+          })
+        .catch(function(error) {
+          console.log(error);
+        });
+      }
+    },
     watch: {
       form: {
         handler() {
           this.change ++;
+          if(this.change > 2){
+            this.savebtn = true
+          }
         },
         deep: true
       }
@@ -176,6 +190,11 @@
     color: #000 !important;
     text-align: left !important;
   }
+
+  #chainwon-content .chainwon-save .el-button .icon {
+    font-size: 2em;
+  }
+
 </style>
 
 <style scoped>
@@ -203,6 +222,18 @@
   .el-form-item {
     margin-bottom: 0 !important;
     display: flex;
+  }
+
+  #chainwon-content .chainwon-save {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+  }
+  #chainwon-content .chainwon-save .el-button {
+    height: 56px;
+    width: 56px;
+    text-align: center;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
   }
 
   #chainwon-content .setting-box .chainwon-setting-box-header {

@@ -78,7 +78,7 @@ export default {
 }
 
 .el-aside.iscollapse {
-  width: 70px!important;;  
+  width: 65px!important;;  
 }
 .el-menu-item.is-active {
   color: #fff;

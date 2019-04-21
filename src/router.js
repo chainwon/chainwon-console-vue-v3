@@ -36,7 +36,7 @@ export default new Router({
       path: '/setting/index',
       component: SettingIndex,
       meta: {
-        keepAlive: false,
+        keepAlive: true,
         title: '个性设置'
       },
     },

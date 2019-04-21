@@ -53,7 +53,6 @@ export default {
         })
         .then(res => {
           if(res.data.state==1){
-            console.log(this.project[index])
             this.project[index].added=true
             this.$notify({
               title: '成功',
