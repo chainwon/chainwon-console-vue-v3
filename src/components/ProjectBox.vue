@@ -24,8 +24,7 @@ export default {
   data() {
     return {
       gutter: 20,
-      screenWidth: document.body.clientWidth,
-      project: []
+      screenWidth: document.body.clientWidth
     };
   },
   created() {
@@ -55,6 +54,8 @@ export default {
         .then(res => {
           if(res.data.state==1){
             this.project[index].added=true
+            this.project.push([])
+            this.project.pop()
             this.$notify({
               title: '成功',
               message: res.data.info,
@@ -83,6 +84,8 @@ export default {
         .then(res => {
           if(res.data.state==1){
             this.project[index].added=false
+            this.project.push([])
+            this.project.pop()
             // this.project.splice(index, 1);
             this.$notify({
               title: '成功',
