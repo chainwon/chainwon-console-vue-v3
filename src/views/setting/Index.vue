@@ -52,10 +52,11 @@
         <el-form>
           <el-input v-model="form.countdown_name" placeholder="事件名称"></el-input>
 
-          <el-date-picker onfocus="this.blur();" style="width:100%;"
+          <el-date-picker style="width:100%;"
             v-model="form.countdown.time"
             type="date"
-            placeholder="选择日期">
+            placeholder="选择日期"
+            :editable="false">
           </el-date-picker>
         </el-form>
       </div>
