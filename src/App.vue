@@ -120,5 +120,9 @@ body {
   .chainwon-item {
     margin-bottom: 10px;
   }
+  .chainwon-box {
+    padding: 1px 10px;
+  }
+
 }
 </style>
