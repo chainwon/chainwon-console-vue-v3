@@ -1,6 +1,7 @@
 <template>
-  <el-main class="chainwon-content">
-    <div class="chainwon-item chainwon-box">
+  <el-main id="chainwon-content">
+    <div class="chainwon-item">
+      <div class="chainwon-cover"></div>
       <div class="chainwon-submit">
         <el-upload
           class="chainwon-upload"
@@ -20,9 +21,14 @@
           <el-input type="textarea" v-model="website.des" placeholder="介绍"></el-input>
         </div>
       </div>
-      <el-button type="primary" style="width:100%;">提交网址</el-button>
+    </div>
+    <el-button type="primary" style="width:100%;">提交网址</el-button>
+    <br> <br>
+
+    <div class="chainwon-item chainwon-box">
       <ul>
-        <li>提交说明
+        <li>
+          提交说明
           <ul>
             <li>
               <p>请输入图片的链接地址！</p>
@@ -42,7 +48,8 @@
           </ul>
         </li>
 
-        <li>反链说明
+        <li>
+          反链说明
           <ul>
             <li>
               <p style="color: blue;">在通过你的网站访问本站时，会有助于你的网站在本站的排行！</p>
@@ -70,7 +77,8 @@
             </li>
           </ul>
         </li>
-        <li>反链特权
+        <li>
+          反链特权
           <ul>
             <li>
               <p>在通过你的网站访问本站时，会有助于你的网站在本站的排行！</p>
@@ -98,7 +106,7 @@ export default {
   },
   methods: {
     handleAvatarSuccess(res, file) {
-        this.upload = false;
+      this.upload = false;
     },
     beforeAvatarUpload(file) {
       this.upload = true;
@@ -115,9 +123,19 @@ export default {
 </style>
 
 <style scoped>
+.chainwon-item {
+  overflow: hidden;
+}
+.chainwon-cover {
+  background-image: url(https://i.loli.net/2019/04/27/5cc3d1f4c9383.png);
+  height: 100px;
+  width: 100%;
+}
 .chainwon-submit {
-  margin-top: 20px;
+  margin-top: -80px;
   margin-bottom: 10px;
+  padding: 35px;
+  padding-bottom: 20px;
 }
 .chainwon-submit::after {
   content: "";
@@ -127,20 +145,23 @@ export default {
 .chainwon-upload {
   font-size: 0;
   border: 1px dashed #d9d9d9;
-  border-radius: 4px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   float: left;
   box-sizing: border-box;
-  width: 152px;
+  width: 110px;
+  height: 110px;
+  margin-top: -10px;
+  border-radius: 100%;
+  background-color: #fff;
 }
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
   width: 100%;
-  height: 152px;
-  line-height: 152px;
+  height: 110px;
+  line-height: 110px;
   text-align: center;
 }
 .avatar {
@@ -151,7 +172,7 @@ export default {
 }
 .chainwon-info {
   float: left;
-  width: calc(100% - 152px);
+  width: calc(100% - 110px);
   padding-left: 10px;
   box-sizing: border-box;
 }
