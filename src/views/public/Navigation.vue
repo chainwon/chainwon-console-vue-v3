@@ -166,7 +166,7 @@ export default {
 }
 .avatar {
   width: 100%;
-  height: 152px;
+  height: 110px;
   display: block;
   border-radius: 4px;
 }
@@ -179,7 +179,7 @@ export default {
 ul {
   font-size: 13px;
   padding-left: 2em;
-  margin-bottom: 25px;
+  margin-bottom: 2em;
   color: #f4696a;
 }
 
