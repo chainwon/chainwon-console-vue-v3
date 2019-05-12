@@ -26,6 +26,10 @@ export default {
     return {
       activities: [
         {
+          content: "轻惋导航 Beta 版本回归",
+          timestamp: "2019-05-11"
+        },
+        {
           content: "适配2K分辨率屏幕",
           timestamp: "2019-04-05"
         },

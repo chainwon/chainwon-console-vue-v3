@@ -46,7 +46,9 @@ export default {
       screenWidth: document.body.clientWidth // 这里是给到了一个默认值 （这个很重要）
     };
   },
-  props: ["isCollapse"],
+  props: {
+    isCollapse: Boolean
+  },
   created() {
     console.log(this.isCollapse)
     this.autoScreen();
@@ -66,6 +68,7 @@ export default {
       } else {
         this.isCollapse = false;
       }
+      this.$emit("sendmsg",this.isCollapse)
     }
   }
 };

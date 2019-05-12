@@ -1,6 +1,6 @@
 <template>
   <el-container id="app">
-    <Menu :isCollapse="isCollapse"/>
+    <Menu @sendmsg="getmsg" :isCollapse="isCollapse"/>
     <el-container class="is-vertical">
       <el-header id="chainwon-header">
         <el-button @click="retract()" icon="iconfont icon-menu" circle></el-button>
@@ -34,8 +34,8 @@ export default {
       .post("/api/view/user")
       .then(res => {
         this.user = res.data;
-        if(this.user.uid==0){
-          window.location.href="https://account.mixcm.com" 
+        if (this.user.uid == 0) {
+          window.location.href = "https://account.mixcm.com";
         }
       })
       .catch(function(error) {
@@ -49,6 +49,9 @@ export default {
       } else {
         this.isCollapse = true;
       }
+    },
+    getmsg(data) {
+      this.isCollapse = data;
     }
   },
   watch: {
@@ -123,6 +126,5 @@ body {
   .chainwon-box {
     padding: 1px 10px;
   }
-
 }
 </style>
