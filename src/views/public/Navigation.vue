@@ -5,24 +5,24 @@
       <div class="chainwon-submit">
         <el-upload
           class="chainwon-upload"
-          :action="'api/controller/picupload'"
+          :action="'/api/controller/uploadImage'"
           accept="image/*"
           :before-upload="beforeAvatarUpload"
           :on-success="handleAvatarSuccess"
           :show-file-list="false"
           v-loading="upload"
         >
-          <img v-if="website.imageUrl" :src="website.imageUrl" class="avatar">
+          <img v-if="website.logo" :src="website.logo" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
         <div class="chainwon-info">
           <el-input v-model="website.title" placeholder="标题" style="margin-bottom:10px;"></el-input>
-          <el-input v-model="website.url" placeholder="链接" style="margin-bottom:10px;"></el-input>
-          <el-input type="textarea" v-model="website.des" placeholder="介绍"></el-input>
+          <el-input v-model="website.site" placeholder="链接" style="margin-bottom:10px;"></el-input>
+          <el-input type="textarea" v-model="website.intro" placeholder="介绍"></el-input>
         </div>
       </div>
     </div>
-    <el-button type="primary" style="width:100%;">提交网址</el-button>
+    <el-button type="primary" style="width:100%;" @click="onSubmit()">提交网址</el-button>
     <br> <br>
 
     <div class="chainwon-item chainwon-box">
@@ -97,20 +97,53 @@ export default {
     return {
       upload: false,
       website: {
-        imageUrl: "",
+        logo: "",
         title: "",
-        url: "",
-        des: ""
+        site: "",
+        intro: ""
       }
     };
   },
   methods: {
     handleAvatarSuccess(res, file) {
       this.upload = false;
+      console.log(res)
+      if(res.state==1){
+        this.website.logo= res.url
+      }else{
+        this.$alert(res.notice)
+      }
     },
     beforeAvatarUpload(file) {
       this.upload = true;
-      this.website.imageUrl = URL.createObjectURL(file);
+      this.website.logo = URL.createObjectURL(file);
+    },
+    onSubmit() {
+      if(this.upload == false){
+        this.axios.post("/api/controller/newNavigation", {
+            logo: this.website.logo,
+            title: this.website.title,
+            site: this.website.site,
+            intro: this.website.intro
+          })
+          .then((res) => {
+            if (res.data.state == 1) {
+              this.$alert(res.data.notice)
+            } else {
+              this.$alert(res.data.notice)
+            }
+          })
+          .catch(function (error) {
+            console.log(error)
+          });
+      }else{
+        this.$notify({
+          title: '警告',
+          message: '请等待图片上传完成！',
+          type: 'warning'
+        });
+      }
+      
     }
   }
 };
@@ -127,7 +160,6 @@ export default {
   overflow: hidden;
 }
 .chainwon-cover {
-  background-image: url(https://i.loli.net/2019/04/27/5cc3d1f4c9383.png);
   height: 100px;
   width: 100%;
 }

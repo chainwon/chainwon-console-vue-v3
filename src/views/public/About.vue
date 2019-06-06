@@ -25,6 +25,10 @@ export default {
   data() {
     return {
       activities: [
+         {
+          content: "网址提交重新上线",
+          timestamp: "2019-06-06"
+        },
         {
           content: "轻惋导航 Beta 版本回归",
           timestamp: "2019-05-11"
