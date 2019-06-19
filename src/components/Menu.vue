@@ -17,7 +17,7 @@
         <span slot="title">功能设置</span>
       </el-menu-item>
       <el-menu-item index="/setting/style">
-        <i class="iconfont icon-setting-fill"></i>
+        <i class="iconfont icon-formatpainter-fill"></i>
         <span slot="title">个性风格</span>
       </el-menu-item>
       <el-menu-item index="/setting/navigation">

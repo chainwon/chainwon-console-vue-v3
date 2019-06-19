@@ -113,6 +113,7 @@ export default {
         this.website.logo = res.url;
       } else {
         this.$alert(res.notice);
+        this.website.logo = "";
       }
     },
     beforeAvatarUpload(file) {
@@ -133,7 +134,6 @@ export default {
               this.$alert(res.data.notice);
             } else {
               this.$alert(res.data.notice);
-              this.website.logo = "";
             }
           })
           .catch(function(error) {

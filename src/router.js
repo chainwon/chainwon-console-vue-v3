@@ -1,76 +1,75 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Notfound from './views/Notfound.vue'
+import Vue from "vue";
+import Router from "vue-router";
 
-import SettingIndex from './views/setting/Index'
-import SettingNavigation from './views/setting/Navigation'
-
-import StoreNavigation from './views/store/Navigation'
-
-import About from './views/public/About'
-import PublicNavigation from './views/public/Navigation'
-
-Vue.use(Router)
+import About from "./views/public/About";
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      component: Home,
+      path: "/",
+      component: () => import("./views/Home.vue"),
       meta: {
         keepAlive: true,
-        title: '首页'
+        title: "首页"
       }
     },
     {
-      path: '*',
-      component: Notfound,
+      path: "*",
+      component: () => import("./views/Notfound.vue"),
       meta: {
         keepAlive: true,
-        title: '404'
+        title: "404"
       }
     },
     {
-      path: '/setting/index',
-      component: SettingIndex,
+      path: "/setting/index",
+      component: () => import("./views/setting/Index"),
       meta: {
         keepAlive: true,
-        title: '个性设置'
-      },
+        title: "功能设置"
+      }
     },
     {
-      path: '/setting/navigation',
-      component: SettingNavigation,
+      path: "/setting/style",
+      component: () => import("./views/setting/Style"),
+      meta: {
+        keepAlive: true,
+        title: "个性风格"
+      }
+    },
+    {
+      path: "/setting/navigation",
+      component: () => import("./views/setting/Navigation"),
       meta: {
         keepAlive: false,
-        title: '我的网址'
-      },
+        title: "我的网址"
+      }
     },
     {
-      path: '/store/navigation',
-      component: StoreNavigation,
+      path: "/store/navigation",
+      component: () => import("./views/store/Navigation"),
       meta: {
         keepAlive: true,
-        title: '网址大全'
-      },
+        title: "网址大全"
+      }
     },
     {
-      path: '/public/about',
+      path: "/public/about",
       component: About,
       meta: {
         keepAlive: true,
-        title: '关于本站'
+        title: "关于本站"
       }
     },
     {
-      path: '/public/navigation',
-      component: PublicNavigation,
+      path: "/public/navigation",
+      component: () => import("./views/public/Navigation"),
       meta: {
         keepAlive: true,
-        title: '收录网址'
+        title: "收录网址"
       }
-    },
+    }
   ]
-})
+});
