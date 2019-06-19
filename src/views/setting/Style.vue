@@ -168,7 +168,7 @@ export default {
   border-radius: 20px;
   right: 20px;
   top: 20px;
-  font-weight: normal;
+  font-weight: 400;
   color: #fff;
   background-color: #ff7d8a;
 }
