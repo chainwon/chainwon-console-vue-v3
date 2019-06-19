@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <el-button type="primary" @click="save()">保存</el-button>
+    <el-button :loading="loading" type="primary" @click="save()">保存</el-button>
   </el-main>
 </template>
 
@@ -115,7 +115,8 @@ export default {
           month: "",
           day: ""
         }
-      }
+      },
+      loading: false
     };
   },
   created() {
@@ -141,11 +142,13 @@ export default {
   },
   methods: {
     save() {
+      this.loading=true
       this.axios
         .post("/api/controller/saveSetting", {
           form: this.form
         })
         .then(res => {
+          this.loading=false
           if (res.data.state == 1) {
             this.$notify({
               title: "成功",

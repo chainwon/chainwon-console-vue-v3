@@ -2,9 +2,14 @@
   <el-main class="chainwon-content">
     <div class="chainwon-item chainwon-box">
       <p>
-        <a
+        <el-link
+          type="primary"
           href="https://shang.qq.com/wpa/qunwpa?idkey=d75bc474c00a39431e2dd839812bb5bc2fe401a3f47cdf256bd8803a1c22cdcb"
-        >进群交流</a>
+          target="_blank"
+        >进群交流</el-link>：482634342
+      </p>
+      <p>
+        <el-link type="primary" href="https://club.chainwon.com/" target="_blank">进论坛反馈</el-link>
       </p>
       <p>
         <el-timeline>
@@ -25,7 +30,11 @@ export default {
   data() {
     return {
       activities: [
-         {
+        {
+          content: "个性风格功能发布",
+          timestamp: "2019-06-19"
+        },
+        {
           content: "网址提交重新上线",
           timestamp: "2019-06-06"
         },
