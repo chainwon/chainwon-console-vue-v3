@@ -116,6 +116,63 @@ body {
   max-height: calc(100vh - 60px);
   overflow-y: auto;
 }
+
+.el-select {
+    width: 85px;
+    background-color: #f1f3f4;
+  }
+
+  .el-input {
+    margin-bottom: 10px;
+  }
+
+  .el-input:last-child {
+    margin-bottom: 0;
+  }
+
+  .el-select>.el-input {
+    margin-bottom: 0;
+  }
+
+  .el-form {
+    width: 100%;
+  }
+
+  .el-form-item {
+    margin-bottom: 0 !important;
+    display: flex;
+  }
+
+  #chainwon-content .chainwon-save {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+  }
+  #chainwon-content .chainwon-save .el-button {
+    height: 56px;
+    width: 56px;
+    text-align: center;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  #chainwon-content .setting-box .chainwon-setting-box-header {
+    height: 64px;
+    padding: 0 24px;
+    align-items: center;
+    display: flex;
+  }
+
+  #chainwon-content .setting-box .chainwon-setting-box-content {
+    padding: 24px;
+    padding-top: 0;
+  }
+
+  #chainwon-content .setting-box p {
+    font-size: 0.9em;
+    color: #ff6675;
+    margin-top: 0;
+  }
+  
 @media screen and (max-width: 768px) {
   #chainwon-content {
     padding: 10px;

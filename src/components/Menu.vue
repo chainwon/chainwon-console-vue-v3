@@ -14,7 +14,11 @@
       </el-menu-item>
       <el-menu-item index="/setting/index">
         <i class="iconfont icon-setting-fill"></i>
-        <span slot="title">个性设置</span>
+        <span slot="title">功能设置</span>
+      </el-menu-item>
+      <el-menu-item index="/setting/style">
+        <i class="iconfont icon-setting-fill"></i>
+        <span slot="title">个性风格</span>
       </el-menu-item>
       <el-menu-item index="/setting/navigation">
         <i class="iconfont icon-unorderedlist"></i>
