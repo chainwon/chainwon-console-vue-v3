@@ -23,7 +23,8 @@
       </div>
     </div>
     <el-button type="primary" style="width:100%;" @click="onSubmit()">提交网址</el-button>
-    <br> <br>
+    <br>
+    <br>
 
     <div class="chainwon-item chainwon-box">
       <ul>
@@ -107,11 +108,11 @@ export default {
   methods: {
     handleAvatarSuccess(res, file) {
       this.upload = false;
-      console.log(res)
-      if(res.state==1){
-        this.website.logo= res.url
-      }else{
-        this.$alert(res.notice)
+      console.log(res);
+      if (res.state == 1) {
+        this.website.logo = res.url;
+      } else {
+        this.$alert(res.notice);
       }
     },
     beforeAvatarUpload(file) {
@@ -119,31 +120,32 @@ export default {
       this.website.logo = URL.createObjectURL(file);
     },
     onSubmit() {
-      if(this.upload == false){
-        this.axios.post("/api/controller/newNavigation", {
+      if (this.upload == false) {
+        this.axios
+          .post("/api/controller/newNavigation", {
             logo: this.website.logo,
             title: this.website.title,
             site: this.website.site,
             intro: this.website.intro
           })
-          .then((res) => {
+          .then(res => {
             if (res.data.state == 1) {
-              this.$alert(res.data.notice)
+              this.$alert(res.data.notice);
             } else {
-              this.$alert(res.data.notice)
+              this.$alert(res.data.notice);
+              this.website.logo = "";
             }
           })
-          .catch(function (error) {
-            console.log(error)
+          .catch(function(error) {
+            console.log(error);
           });
-      }else{
+      } else {
         this.$notify({
-          title: '警告',
-          message: '请等待图片上传完成！',
-          type: 'warning'
+          title: "警告",
+          message: "请等待图片上传完成！",
+          type: "warning"
         });
       }
-      
     }
   }
 };
