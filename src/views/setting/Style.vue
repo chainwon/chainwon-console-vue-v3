@@ -28,6 +28,7 @@
                   <i class="el-icon-picture-outline"></i>
                 </div>
               </el-image>
+              <h4>{{ item.name }}</h4>
               <el-button
                 v-if="!item.check"
                 type="primary"
@@ -116,13 +117,13 @@ export default {
         });
     },
     saveCss() {
-      this.loading=true
+      this.loading = true;
       this.axios
         .post("/api/controller/saveCss", {
           css: this.user.css
         })
         .then(res => {
-          this.loading=false
+          this.loading = false;
           if (res.data.state == 1) {
             this.$notify({
               title: "成功",
@@ -152,11 +153,24 @@ export default {
   border-radius: 4px;
   overflow: hidden;
   font-size: 0;
+  border: 1px solid #eee;
 }
 .mixcm-theme {
   margin-bottom: 20px;
   position: relative;
   padding-bottom: 20px;
+}
+.mixcm-theme h4 {
+  margin: 0;
+  position: absolute;
+  line-height: 30px;
+  padding: 0 10px;
+  border-radius: 20px;
+  right: 20px;
+  top: 20px;
+  font-weight: normal;
+  color: #fff;
+  background-color: #ff7d8a;
 }
 .mixcm-theme .el-button {
   position: absolute;
