@@ -244,6 +244,7 @@ export default {
               position: "bottom-right",
               type: "success"
             });
+            location.reload()
           } else {
             this.$alert(res.data.notice);
           }
