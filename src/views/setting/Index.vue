@@ -222,18 +222,6 @@ export default {
   display: flex;
 }
 
-#chainwon-content .setting-box .chainwon-setting-box-header {
-  height: 64px;
-  padding: 0 24px;
-  align-items: center;
-  display: flex;
-}
-
-#chainwon-content .setting-box .chainwon-setting-box-content {
-  padding: 24px;
-  padding-top: 0;
-}
-
 #chainwon-content .setting-box p {
   font-size: 0.9em;
   color: #ff6675;

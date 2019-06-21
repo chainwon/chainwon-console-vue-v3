@@ -158,12 +158,6 @@ body {
   padding-top: 0;
 }
 
-#chainwon-content .setting-box p {
-  font-size: 0.9em;
-  color: #ff6675;
-  margin-top: 0;
-}
-
 @media screen and (max-width: 768px) {
   #chainwon-content {
     padding: 10px;

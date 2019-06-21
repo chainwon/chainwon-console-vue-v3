@@ -4,31 +4,31 @@
       <div style="height:24px;"></div>
       <div class="chainwon-setting-box-content">
         <div class="chainwon-submit">
-            <el-upload
-              class="chainwon-upload"
-              :action="'/api/controller/uploadImage'"
-              accept="image/*"
-              :before-upload="beforeAvatarUpload"
-              :on-success="handleAvatarSuccess"
-              :show-file-list="false"
-              v-loading="upload"
-               disabled
-            >
-              <img v-if="item.logo" :src="item.logo" class="avatar">
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-            <div class="chainwon-info">
-              <el-input v-model="item.name" placeholder="标题" style="margin-bottom:10px;"  disabled></el-input>
-              <el-input v-model="item.site" placeholder="链接" disabled></el-input>
-            </div>
-            <el-input
-              type="textarea"
-              v-model="item.intro"
-              placeholder="介绍"
-              style="margin-top:10px;"
-               disabled
-            ></el-input>
+          <el-upload
+            class="chainwon-upload"
+            :action="'/api/controller/uploadImage'"
+            accept="image/*"
+            :before-upload="beforeAvatarUpload"
+            :on-success="handleAvatarSuccess"
+            :show-file-list="false"
+            v-loading="item.upload"
+            disabled
+          >
+            <img v-if="item.logo" :src="item.logo" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+          <div class="chainwon-info">
+            <el-input v-model="item.name" placeholder="标题" style="margin-bottom:10px;" disabled></el-input>
+            <el-input v-model="item.site" placeholder="链接" disabled></el-input>
           </div>
+          <el-input
+            type="textarea"
+            v-model="item.intro"
+            placeholder="介绍"
+            style="margin-top:10px;"
+            disabled
+          ></el-input>
+        </div>
       </div>
     </div>
     <div class="chainwon-item setting-box">
@@ -58,7 +58,7 @@
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
             <div class="chainwon-info">
-              <el-input v-model="website.title" placeholder="标题" style="margin-bottom:10px;"></el-input>
+              <el-input v-model="website.name" placeholder="标题" style="margin-bottom:10px;"></el-input>
               <el-input v-model="website.site" placeholder="链接" disabled></el-input>
             </div>
             <el-input
@@ -69,7 +69,7 @@
             ></el-input>
           </div>
           <el-button @click="active--">上一步</el-button>
-          <el-button :loading="loading" @click="active++" type="primary">下一步</el-button>
+          <el-button :loading="loading" @click="onSubmit()" type="primary">下一步</el-button>
         </div>
         <div class="chainwon-step" v-if="active==2">
           验证您对 {{ website.site }} 的所有权
@@ -109,7 +109,7 @@ export default {
         intro: ""
       },
       sites: [],
-      active: 0,
+      active: 0
     };
   },
   created() {
@@ -187,6 +187,42 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    onSubmit() {
+      if (this.upload == false) {
+        this.loading = true;
+        this.axios
+          .post("/api/controller/newNavigation", {
+            logo: this.website.logo,
+            name: this.website.name,
+            site: this.website.site,
+            intro: this.website.intro
+          })
+          .then(res => {
+            if (res.data.state == 1) {
+              this.$notify({
+                title: "成功",
+                message: res.data.notice,
+                position: "bottom-right",
+                type: "success"
+              });
+              this.active++;
+              this.site_id = res.data.site_id;
+            } else {
+              this.$alert(res.data.notice);
+            }
+            this.loading = false;
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      } else {
+        this.$notify({
+          title: "警告",
+          message: "请等待图片上传完成！",
+          type: "warning"
+        });
+      }
     }
   }
 };

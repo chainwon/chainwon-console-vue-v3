@@ -147,6 +147,7 @@ export default {
 .chainwon-project-box {
   text-align: center;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 .chainwon-project-box .chainwon-background {
   width: 100%;
@@ -178,6 +179,9 @@ export default {
   overflow: hidden;
 }
 @media screen and (max-width: 768px) {
+  .chainwon-project-box {
+    margin-bottom: 10px;
+  }
   .chainwon-project-box .chainwon-background {
     height: 75px;
   }
