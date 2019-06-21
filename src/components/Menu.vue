@@ -20,9 +20,14 @@
         <i class="iconfont icon-formatpainter-fill"></i>
         <span slot="title">个性风格</span>
       </el-menu-item>
+      <li class="chainwon-divider"></li>
+      <el-menu-item index="/setting/site">
+        <i class="iconfont icon-link"></i>
+        <span slot="title">我的站点</span>
+      </el-menu-item>
       <el-menu-item index="/setting/navigation">
         <i class="iconfont icon-unorderedlist"></i>
-        <span slot="title">我的网址</span>
+        <span slot="title">收藏网址</span>
       </el-menu-item>
       <li class="chainwon-divider"></li>
       <el-menu-item index="/store/navigation">

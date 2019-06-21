@@ -1,6 +1,14 @@
 <template>
   <el-row :gutter="gutter">
-    <el-col :xs="12" :sm="8" :md="6" :lg="4" :xl="3" v-for="(item, index) in project" :key="item.time">
+    <el-col
+      :xs="12"
+      :sm="8"
+      :md="6"
+      :lg="4"
+      :xl="3"
+      v-for="(item, index) in project"
+      :key="item.time"
+    >
       <div class="chainwon-item chainwon-project-box">
         <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
         <div class="chainwon-logo">
@@ -10,8 +18,20 @@
         </div>
         <div class="chainwon-title">{{item.name}}</div>
         <div class="chainwon-des">{{item.intro}}</div>
-        <el-button v-if="!item.added" type="primary" @click="addNavigation(item.site_id,index)" size="mini" plain>添加</el-button>
-        <el-button v-if="item.added" type="info" @click="removeNavigation(item.site_id,index)" size="mini" plain>移除</el-button>
+        <el-button
+          v-if="!item.added"
+          type="primary"
+          @click="addNavigation(item.site_id,index)"
+          size="mini"
+          plain
+        >添加</el-button>
+        <el-button
+          v-if="item.added"
+          type="info"
+          @click="removeNavigation(item.site_id,index)"
+          size="mini"
+          plain
+        >移除</el-button>
       </div>
     </el-col>
   </el-row>
@@ -46,62 +66,60 @@ export default {
         this.gutter = 20;
       }
     },
-    addNavigation(site_id,index) {
+    addNavigation(site_id, index) {
       this.axios
         .post("/api/controller/addNavigation", {
           site_id: site_id
         })
         .then(res => {
-          if(res.data.state==1){
-            this.project[index].added=true
-            this.project.push([])
-            this.project.pop()
+          if (res.data.state == 1) {
+            this.project[index].added = true;
+            this.project.push([]);
+            this.project.pop();
             this.$notify({
-              title: '成功',
+              title: "成功",
               message: res.data.info,
-              position: 'bottom-right',
-              type: 'success'
+              position: "bottom-right",
+              type: "success"
             });
-          }else{
+          } else {
             this.$notify({
-              title: '失败',
+              title: "失败",
               message: res.data.info,
-              position: 'bottom-right',
-              type: 'error'
+              position: "bottom-right",
+              type: "error"
             });
           }
-          
         })
         .catch(function(error) {
           console.log(error);
         });
     },
-    removeNavigation(site_id,index) {
+    removeNavigation(site_id, index) {
       this.axios
         .post("/api/controller/removeNavigation", {
           site_id: site_id
         })
         .then(res => {
-          if(res.data.state==1){
-            this.project[index].added=false
-            this.project.push([])
-            this.project.pop()
+          if (res.data.state == 1) {
+            this.project[index].added = false;
+            this.project.push([]);
+            this.project.pop();
             // this.project.splice(index, 1);
             this.$notify({
-              title: '成功',
+              title: "成功",
               message: res.data.info,
-              position: 'bottom-right',
-              type: 'success'
+              position: "bottom-right",
+              type: "success"
             });
-          }else{
+          } else {
             this.$notify({
-              title: '失败',
+              title: "失败",
               message: res.data.info,
-              position: 'bottom-right',
-              type: 'error'
+              position: "bottom-right",
+              type: "error"
             });
           }
-          
         })
         .catch(function(error) {
           console.log(error);
@@ -110,6 +128,16 @@ export default {
   }
 };
 </script>
+
+<style>
+.chainwon-project-box .chainwon-logo img {
+  border-radius: 100%;
+  height: 100px;
+  width: 100px;
+  border: 4px solid #fff;
+  background: #fff;
+}
+</style>
 
 <style scoped>
 .el-button {
@@ -129,15 +157,6 @@ export default {
 .chainwon-project-box .chainwon-logo {
   text-align: center;
   margin-top: -50px;
-  padding-bottom: 100%;
-  height: 0;
-}
-.chainwon-project-box .chainwon-logo img {
-  border-radius: 100%;
-  height: 100px;
-  width: 100px;
-  border: 4px solid #fff;
-  background: #fff;
 }
 .chainwon-project-box .chainwon-title {
   height: 29px;

@@ -40,6 +40,14 @@ export default new Router({
       }
     },
     {
+      path: "/setting/site",
+      component: () => import("./views/setting/Site"),
+      meta: {
+        keepAlive: true,
+        title: "我的站点"
+      }
+    },
+    {
       path: "/setting/navigation",
       component: () => import("./views/setting/Navigation"),
       meta: {
