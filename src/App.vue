@@ -68,26 +68,12 @@ router.beforeEach((to, from, next) => {
     document.title = title;
   }
 
-  // 百度统计
-  setTimeout(() => {
-    var _hmt = _hmt || [];
-    (function() {
-      //每次执行前，先移除上次插入的代码
-      document.getElementById("baidu_tj") &&
-        document.getElementById("baidu_tj").remove();
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?41b04999ee3d67f2acc9ce741045e68d";
-      hm.id = "baidu_tj";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  }, 0);
-
   next();
 });
 </script>
 
 <style>
+@import url(//at.alicdn.com/t/font_1067766_60buo97abdj.css);
 body {
   margin: 0;
   background-color: #f3f3f3;
