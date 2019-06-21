@@ -92,8 +92,6 @@
       </div>
     </div>
     <el-button :loading="loading" type="primary" @click="onSubmit()">提交网址</el-button>
-    <br>
-    <br>
   </el-main>
 </template>
 
@@ -220,19 +218,18 @@ export default {
 }
 ul {
   font-size: 13px;
-  padding-left: 2em;
-  margin-bottom: 2em;
   color: #f4696a;
 }
 
 ul li p {
-  color: rgb(90, 95, 105);
+  color: #606266;
   margin: 3px 0;
 }
 
 ul li p a {
   color: #f4696a;
 }
+
 @media screen and (max-width: 768px) {
   .chainwon-info {
     width: 100%;
