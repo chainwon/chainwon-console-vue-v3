@@ -65,8 +65,73 @@
               type="textarea"
               v-model="website.intro"
               placeholder="介绍"
-              style="margin-top:10px;margin-bottom:20px;"
+              style="margin-top:10px;"
             ></el-input>
+          </div>
+          <div class="chainwon-alert">
+            <ul>
+              <li>
+                提交说明
+                <ul>
+                  <li>
+                    <p>请输入图片的链接地址！</p>
+                  </li>
+                  <li>
+                    <p>图片必须是正方形！</p>
+                  </li>
+                  <li>
+                    <p>图片分辨率大小至少为100×100px！</p>
+                  </li>
+                  <li>
+                    <p>
+                      进QQ群
+                      <a>482634342</a> 与站长交流。
+                    </p>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                反链说明
+                <ul>
+                  <li>
+                    <p style="color: blue;">在通过你的网站访问本站时，会有助于你的网站在本站的排行！</p>
+                  </li>
+                  <li>
+                    <p>标题：轻惋导航</p>
+                  </li>
+                  <li>
+                    <p>介绍：这个导航将会有无限的可能！</p>
+                  </li>
+                  <li>
+                    <p>
+                      链接：
+                      <a
+                        href="https://www.chainwon.com/"
+                        target="_blank"
+                      >https://www.chainwon.com/</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Logo：
+                      <a
+                        href="https://www.chainwon.com/static/logo.png"
+                        target="_blank"
+                      >https://www.chainwon.com/static/logo.png</a>
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                反链特权
+                <ul>
+                  <li>
+                    <p>在通过你的网站访问本站时，会有助于你的网站在本站的排行！</p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
           <el-button @click="active--">上一步</el-button>
           <el-button :loading="loading" @click="onSubmit()" type="primary">下一步</el-button>
@@ -238,12 +303,28 @@ export default {
   padding: 30px;
   box-sizing: border-box;
   margin: 20px 0;
+  margin-top: 10px;
   color: #606266;
   border-radius: 4px;
 }
-.chainwon-alert ol {
+.chainwon-alert ol,
+.chainwon-alert ul {
   padding-left: calc(1em + 5px);
   margin: 0;
+}
+ul,
+ol {
+  font-size: 13px;
+  color: #f4696a;
+}
+ol li p,
+ul li p {
+  color: #606266;
+  margin: 3px 0;
+}
+ol li p a,
+ul li p a {
+  color: #f4696a;
 }
 .chainwon-submit::after {
   content: "";
