@@ -31,6 +31,10 @@ export default {
     return {
       activities: [
         {
+          content: "现在可以绑定自己的站点了，绑定后就可以随时修改站点信息了（虽然这个功能我还没写完）",
+          timestamp: "2019-06-21"
+        },
+        {
           content: "个性风格功能发布",
           timestamp: "2019-06-19"
         },
