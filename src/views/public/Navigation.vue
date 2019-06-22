@@ -229,12 +229,4 @@ ul li p {
 ul li p a {
   color: #f4696a;
 }
-
-@media screen and (max-width: 768px) {
-  .chainwon-info {
-    width: 100%;
-    padding-left: 0;
-    padding-top: 10px;
-  }
-}
 </style>
