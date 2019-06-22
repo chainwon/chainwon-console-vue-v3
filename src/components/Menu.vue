@@ -8,10 +8,6 @@
       :collapse-transition="false"
     >
       <el-menu-item :index="false"></el-menu-item>
-      <el-menu-item :index="false" onclick="window.open('https://www.chainwon.com/')">
-        <i class="iconfont icon-home-fill"></i>
-        <span slot="title">回到导航</span>
-      </el-menu-item>
       <el-menu-item index="/setting/index">
         <i class="iconfont icon-setting-fill"></i>
         <span slot="title">功能设置</span>
