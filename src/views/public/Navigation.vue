@@ -224,6 +224,7 @@ ul {
 ul li p {
   color: #606266;
   margin: 3px 0;
+  word-break: break-all;
 }
 
 ul li p a {

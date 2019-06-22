@@ -322,6 +322,7 @@ ol li p,
 ul li p {
   color: #606266;
   margin: 3px 0;
+  word-break: break-all;
 }
 ol li p a,
 ul li p a {
