@@ -1,5 +1,10 @@
 <template>
   <el-main id="chainwon-content">
+    <el-form ref="form" onsubmit="return false">
+      <el-input placeholder="请输入内容后回车搜索" v-model="keyword" clearable>
+        <el-button slot="append" icon="el-icon-search" @click="init()" native-type="submit"></el-button>
+      </el-input>
+    </el-form>
     <div class="chainwon-tag">
       <el-button :disabled="loading" v-for="(item, index) in tag" @click="tagOn(index)" :key="index" type="primary" :plain="!item.plain" size="mini"># {{item.title}}</el-button>
     </div>
@@ -30,21 +35,12 @@ export default {
       loading: false,
       project: [],
       tag: [],
-      tag_id: 0
+      tag_id: 0,
+      keyword: ''
     };
   },
   created() {
-    this.axios
-      .post("/api/view/storeNavigation", {
-        page: this.page,
-        tag_id: this.tag_id
-      })
-      .then(res => {
-        this.project = res.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    this.init()
     this.axios
       .post("/api/view/storeTag")
       .then(res => {
@@ -63,13 +59,33 @@ export default {
       this.axios
         .post("/api/view/storeNavigation", {
           page: this.page,
-          tag_id: this.tag_id
+          tag_id: this.tag_id,
+          keyword: this.keyword
         })
         .then(res => {
           if (res.data.length > 0) {
             this.project = this.project.concat(res.data);
             this.busy = false;
           }
+          this.loading = false;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    init() {
+      this.page = 1
+      this.busy = true;
+      this.loading = true;
+      this.axios
+        .post("/api/view/storeNavigation", {
+          page: this.page,
+          tag_id: this.tag_id,
+          keyword: this.keyword
+        })
+        .then(res => {
+          this.project = res.data;
+          this.busy = false;
           this.loading = false;
         })
         .catch(function(error) {
@@ -84,37 +100,32 @@ export default {
       this.tag[index].plain = true
       this.tag.push([]);
       this.tag.pop();
-      this.page=1
-      this.busy = true;
-      this.loading = true;
-      this.axios
-        .post("/api/view/storeNavigation", {
-          page: this.page,
-          tag_id: this.tag_id
-        })
-        .then(res => {
-          this.project = res.data;
-          this.busy = false;
-          this.loading = false;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      this.init()
     }
   }
 };
 </script>
 
 <style scoped>
+.el-form {
+  margin-bottom: 20px;
+}
 .chainwon-tag {
   margin-bottom: 15px;
 }
-
-.el-button {
+.chainwon-tag .el-button {
   margin-bottom: 5px;
   margin-right: 10px;
 }
-.el-button + .el-button {
+.chainwon-tag .el-button + .el-button {
   margin-left: 0;
+}
+@media screen and (max-width: 768px) {
+  .chainwon-tag {
+    margin-bottom: 5px;
+  }
+  .el-form {
+    margin-bottom: 10px;
+  }
 }
 </style>
