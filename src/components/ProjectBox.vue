@@ -13,7 +13,7 @@
         <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
         <div class="chainwon-logo">
           <a class="mdui-ripple" :href="item.site" target="_blank">
-            <el-image :src="item.logo" :alt="item.name"></el-image>
+            <img :src="item.logo" :alt="item.name"></img>
           </a>
         </div>
         <div class="chainwon-title">{{item.name}}</div>
