@@ -2,14 +2,14 @@
   <el-main class="chainwon-content">
     <div class="chainwon-item chainwon-box">
       <p>
-        <el-link
-          type="primary"
-          href="https://shang.qq.com/wpa/qunwpa?idkey=d75bc474c00a39431e2dd839812bb5bc2fe401a3f47cdf256bd8803a1c22cdcb"
-          target="_blank"
-        >进群交流</el-link>：482634342
-      </p>
-      <p>
-        <el-link type="primary" href="https://club.chainwon.com/" target="_blank">进论坛反馈</el-link>
+        <el-alert title="准备高考了，所以出现问题不一定能及时修复。" type="error">
+          <el-link
+            type="primary"
+            href="https://shang.qq.com/wpa/qunwpa?idkey=d75bc474c00a39431e2dd839812bb5bc2fe401a3f47cdf256bd8803a1c22cdcb"
+            target="_blank"
+          >进群交流</el-link>：482634342 <br>
+          <el-link type="primary" href="https://club.chainwon.com/" target="_blank">进论坛反馈</el-link>：https://club.chainwon.com/
+        </el-alert>
       </p>
       <p>
         <el-timeline>
@@ -31,7 +31,13 @@ export default {
     return {
       activities: [
         {
-          content: "现在可以绑定自己的站点了，绑定后就可以随时修改站点信息了（虽然这个功能我还没写完）",
+          content:
+            "加入站点搜索，分类标签",
+          timestamp: "2019-06-30"
+        },
+        {
+          content:
+            "现在可以绑定自己的站点了，绑定后就可以随时修改站点信息了（虽然这个功能我还没写完）",
           timestamp: "2019-06-21"
         },
         {
