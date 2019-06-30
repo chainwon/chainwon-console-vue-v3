@@ -35,7 +35,7 @@
           <el-form-item label="展示未审核内容">
             <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.unaudited"></el-switch>
           </el-form-item>
-          <el-form-item label="展示封禁（18×）内容">
+          <el-form-item label="我是成年人">
             <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.ban"></el-switch>
           </el-form-item>
         </el-form>
