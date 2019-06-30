@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "element-ui": "^2.7.2",
+    "lighthouse": "^5.1.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1"
   },
