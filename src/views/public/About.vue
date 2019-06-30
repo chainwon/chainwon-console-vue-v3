@@ -7,9 +7,16 @@
             type="primary"
             href="https://shang.qq.com/wpa/qunwpa?idkey=d75bc474c00a39431e2dd839812bb5bc2fe401a3f47cdf256bd8803a1c22cdcb"
             target="_blank"
-          >进群交流</el-link>：482634342 <br>
+          >进群交流</el-link>：482634342
+          <br />
           <el-link type="primary" href="https://club.chainwon.com/" target="_blank">进论坛反馈</el-link>：https://club.chainwon.com/
         </el-alert>
+      </p>
+      <p>
+        <el-progress :text-inside="true" :stroke-width="20" :percentage="(500-date)/5"></el-progress>
+      </p>
+      <p>
+        <el-progress :text-inside="true" :stroke-width="20" :percentage="kao/365*100"></el-progress>
       </p>
       <p>
         <el-timeline>
@@ -31,8 +38,7 @@ export default {
     return {
       activities: [
         {
-          content:
-            "加入站点搜索，分类标签",
+          content: "加入站点搜索，分类标签",
           timestamp: "2019-06-30"
         },
         {
@@ -64,8 +70,17 @@ export default {
           content: "轻惋导航创建",
           timestamp: "2016-04-29"
         }
-      ]
+      ],
+      date: "",
+      kao: ""
     };
+  },
+  created() {
+    var date1 = new Date();
+    var date2 = new Date("2020-07-20");
+    var date3 = new Date("2020-06-07");
+    this.date = (date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000);
+    this.kao = (date3.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000);
   }
 };
 </script>
