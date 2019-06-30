@@ -18,19 +18,32 @@
         </div>
         <div class="chainwon-major">
           <div class="chainwon-title">{{item.name}}</div>
-          <el-button
+          <el-popover
+            placement="bottom"
+            :title="item.name"
             v-if="!item.added"
-            type="primary"
-            @click="addNavigation(item.site_id,index)"
-            size="mini"
-            plain
-          >添加</el-button>
+            width="200"
+            trigger="hover"
+            :content="item.intro">
+            <el-button
+              slot="reference"
+              type="primary"
+              @click="addNavigation(item.site_id,index)"
+              size="mini"
+              icon="el-icon-circle-plus"
+              plain
+              round
+            >添加</el-button>
+          </el-popover>
+          
           <el-button
             v-if="item.added"
             type="info"
             @click="removeNavigation(item.site_id,index)"
             size="mini"
+            icon="el-icon-error"
             plain
+            round
           >移除</el-button>
         </div>
       </div>
@@ -155,7 +168,7 @@ export default {
   background-position: center;
 }
 .chainwon-project-box .chainwon-logo {
-  margin-top: -50px;
+  margin-top: -54px;
   float: left;
   margin-left: 30px;
   margin-bottom: 15px;
@@ -165,7 +178,7 @@ export default {
   width: calc(100% - 138px);
   padding-left: 10px;
   box-sizing: border-box;
-  margin-top: -31px;
+  margin-top: -34px;
 }
 .chainwon-project-box .chainwon-major .chainwon-title {
   height: 30px;
