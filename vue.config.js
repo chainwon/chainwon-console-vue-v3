@@ -1,5 +1,6 @@
 module.exports = {
     productionSourceMap: false,
+
     devServer: {
         proxy: {
             '/api': {
@@ -11,5 +12,15 @@ module.exports = {
                 }
             }
         }
+    },
+
+    publicPath: undefined,
+    outputDir: undefined,
+    assetsDir: undefined,
+    runtimeCompiler: undefined,
+    parallel: undefined,
+
+    css: {
+      extract: false
     }
 }
