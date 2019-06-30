@@ -1,11 +1,11 @@
 <template>
   <el-row :gutter="gutter">
     <el-col
-      :xs="12"
-      :sm="8"
-      :md="6"
-      :lg="4"
-      :xl="3"
+      :xs="24"
+      :sm="12"
+      :md="8"
+      :lg="6"
+      :xl="4"
       v-for="(item, index) in project"
       :key="item.time"
     >
@@ -13,25 +13,26 @@
         <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
         <div class="chainwon-logo">
           <a class="mdui-ripple" :href="item.site" target="_blank">
-            <img :src="item.logo" :alt="item.name"></img>
+            <img :src="item.logo" :alt="item.name">
           </a>
         </div>
-        <div class="chainwon-title">{{item.name}}</div>
-        <div class="chainwon-des">{{item.intro}}</div>
-        <el-button
-          v-if="!item.added"
-          type="primary"
-          @click="addNavigation(item.site_id,index)"
-          size="mini"
-          plain
-        >添加</el-button>
-        <el-button
-          v-if="item.added"
-          type="info"
-          @click="removeNavigation(item.site_id,index)"
-          size="mini"
-          plain
-        >移除</el-button>
+        <div class="chainwon-major">
+          <div class="chainwon-title">{{item.name}}</div>
+          <el-button
+            v-if="!item.added"
+            type="primary"
+            @click="addNavigation(item.site_id,index)"
+            size="mini"
+            plain
+          >添加</el-button>
+          <el-button
+            v-if="item.added"
+            type="info"
+            @click="removeNavigation(item.site_id,index)"
+            size="mini"
+            plain
+          >移除</el-button>
+        </div>
       </div>
     </el-col>
   </el-row>
@@ -141,32 +142,40 @@ export default {
 
 <style scoped>
 .el-button {
-  margin-bottom: 15px;
-  width: 90px;
+  
 }
 .chainwon-project-box {
-  text-align: center;
   overflow: hidden;
   margin-bottom: 20px;
 }
 .chainwon-project-box .chainwon-background {
   width: 100%;
-  height: 95px;
+  height: 84px;
   background-size: cover;
   background-position: center;
 }
 .chainwon-project-box .chainwon-logo {
-  text-align: center;
   margin-top: -50px;
+  float: left;
+  margin-left: 30px;
+  margin-bottom: 15px;
 }
-.chainwon-project-box .chainwon-title {
-  height: 29px;
+.chainwon-project-box .chainwon-major {
+  float: left;
+  width: calc(100% - 138px);
+  padding-left: 10px;
+  box-sizing: border-box;
+  margin-top: -31px;
+}
+.chainwon-project-box .chainwon-major .chainwon-title {
+  height: 30px;
   line-height: 29px;
-  text-align: center;
   font-weight: 900;
-  margin-bottom: -5px;
+  margin-bottom: 12px;
+  color: #fff;
+  text-shadow: 0 0 0 #000;
 }
-.chainwon-project-box .chainwon-des {
+.chainwon-project-box .chainwon-major .chainwon-des {
   margin: 6px 15px;
   text-align: center;
   color: #888;
@@ -181,13 +190,6 @@ export default {
 @media screen and (max-width: 768px) {
   .chainwon-project-box {
     margin-bottom: 10px;
-  }
-  .chainwon-project-box .chainwon-background {
-    height: 75px;
-  }
-  .chainwon-project-box .chainwon-logo img {
-    width: 80px;
-    height: 80px;
   }
   .el-button {
     margin-bottom: 15px;
