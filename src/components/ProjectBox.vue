@@ -12,6 +12,7 @@
       <div class="chainwon-item chainwon-project-box">
         <!--<div class="chainwon-background" :style="'background-image:url('+ item.logo +');'"></div>-->
         <div class="chainwon-logo">
+          <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
           <a class="mdui-ripple" :href="item.site" target="_blank">
             <img :src="item.logo" :alt="item.name">
           </a>
@@ -39,7 +40,6 @@
             @click="removeNavigation(item.site_id,index)"
             size="mini"
             icon="el-icon-error"
-            plain
             round
           >移除</el-button>
           <div class="chainwon-title">{{item.name}}</div>
@@ -154,14 +154,13 @@ export default {
   position: relative;
 }
 .chainwon-project-box .chainwon-background {
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 84px;
+  width: calc(100% + 60px);
+  top: -30px;
+  left: -30px;
+  height: calc(50% + 40px);
   position: absolute;
   background-size: cover;
   background-position: center;
-  filter: blur(30px);
 }
 .chainwon-project-box .chainwon-logo {
   position: relative;
@@ -172,7 +171,7 @@ export default {
   width: 100%;
   background: #fff;
   border-radius: 4px;
-  border: 1px solid #eee;
+  position: relative;
 }
 .chainwon-project-box .chainwon-major {
   margin-top: -24px;
@@ -180,9 +179,8 @@ export default {
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
-}
-.chainwon-project-box .chainwon-major .el-button{
   position: relative;
+  z-index: 5;
 }
 .chainwon-project-box .chainwon-major .chainwon-title {
   margin-top: 8px;
@@ -206,6 +204,13 @@ export default {
 @media screen and (max-width: 768px) {
   .chainwon-project-box {
     margin-bottom: 10px;
+  }
+  .chainwon-project-box {
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 0;
+    position: relative;
   }
 }
 </style>
