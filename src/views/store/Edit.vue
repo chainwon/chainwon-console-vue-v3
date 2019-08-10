@@ -47,7 +47,7 @@
       :loading="loading"
       type="primary"
       @click="onSubmit()"
-    >更新信息</el-button>
+    >提交更改</el-button>
     <el-button
       :loading="loading_ban"
       type="info"

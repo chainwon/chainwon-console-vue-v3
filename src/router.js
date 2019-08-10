@@ -68,7 +68,7 @@ export default new Router({
       component: () => import("./views/store/Edit"),
       meta: {
         keepAlive: false,
-        title: "更新信息"
+        title: "站点编辑"
       }
     },
     {
