@@ -1,21 +1,20 @@
 <template>
   <el-row :gutter="gutter">
     <el-col
-      :xs="12"
-      :sm="6"
-      :md="4"
-      :lg="3"
-      :xl="3"
+      :xs="8"
+      :sm="4"
+      :md="3"
+      :lg="2"
+      :xl="2"
       v-for="(item, index) in project"
       :key="item.time"
     >
       <div class="chainwon-item chainwon-project-box">
         <!--<div class="chainwon-background" :style="'background-image:url('+ item.logo +');'"></div>-->
         <div class="chainwon-logo">
-          <div class="chainwon-background" :style="'background-image:url('+ item.cover +');'"></div>
-          <a class="mdui-ripple" :href="item.site" target="_blank">
+          <router-link class="mdui-ripple" :to="'/store/edit/'+item.site_id">
             <img :src="item.logo" :alt="item.name">
-          </a>
+          </router-link>
         </div>
         <div class="chainwon-major">
           <el-popover
@@ -149,18 +148,8 @@ export default {
 .chainwon-project-box {
   overflow: hidden;
   margin-bottom: 20px;
-  padding: 30px;
   padding-bottom: 0;
   position: relative;
-}
-.chainwon-project-box .chainwon-background {
-  width: calc(100% + 60px);
-  top: -30px;
-  left: -30px;
-  height: calc(50% + 40px);
-  position: absolute;
-  background-size: cover;
-  background-position: center;
 }
 .chainwon-project-box .chainwon-logo {
   position: relative;
@@ -170,7 +159,6 @@ export default {
 .chainwon-project-box .chainwon-logo img {
   width: 100%;
   background: #fff;
-  border-radius: 4px;
   position: relative;
 }
 .chainwon-project-box .chainwon-major {
@@ -208,7 +196,6 @@ export default {
   .chainwon-project-box {
     overflow: hidden;
     margin-bottom: 20px;
-    padding: 20px;
     padding-bottom: 0;
     position: relative;
   }

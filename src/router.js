@@ -64,6 +64,14 @@ export default new Router({
       }
     },
     {
+      path: "/store/edit/:id",
+      component: () => import("./views/store/Edit"),
+      meta: {
+        keepAlive: false,
+        title: "更新信息"
+      }
+    },
+    {
       path: "/public/about",
       component: About,
       meta: {

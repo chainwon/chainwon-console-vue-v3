@@ -4,6 +4,7 @@
       <div style="height:24px;"></div>
       <div class="chainwon-setting-box-content">
         <div class="chainwon-submit">
+          <router-link class="mdui-ripple" :to="'/store/edit/'+item.site_id">
           <el-upload
             class="chainwon-upload"
             :action="'/api/controller/uploadImage'"
@@ -17,17 +18,18 @@
             <img v-if="item.logo" :src="item.logo" class="avatar">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
+          </router-link>
           <div class="chainwon-info">
             <el-input v-model="item.name" placeholder="标题" style="margin-bottom:10px;" disabled></el-input>
             <el-input v-model="item.site" placeholder="链接" disabled></el-input>
           </div>
-          <el-input
+          <!--<el-input
             type="textarea"
             v-model="item.intro"
             placeholder="介绍"
             style="margin-top:10px;"
             disabled
-          ></el-input>
+          ></el-input>-->
         </div>
       </div>
     </div>

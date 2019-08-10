@@ -16,7 +16,7 @@ module.exports = {
 
     publicPath: undefined,
     outputDir: undefined,
-    assetsDir: undefined,
+    assetsDir: 'static',
     runtimeCompiler: undefined,
     parallel: undefined,
 
