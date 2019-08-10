@@ -147,15 +147,14 @@ body {
 }
 
 #chainwon-content .setting-box .chainwon-setting-box-header {
-  height: 64px;
-  padding: 0 24px;
+  padding: 24px;
+  padding-bottom: 0;
   align-items: center;
   display: flex;
 }
 
 #chainwon-content .setting-box .chainwon-setting-box-content {
   padding: 24px;
-  padding-top: 0;
 }
 
 @media screen and (max-width: 768px) {

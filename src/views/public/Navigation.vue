@@ -1,7 +1,6 @@
 <template>
   <el-main id="chainwon-content">
     <div class="chainwon-item setting-box">
-      <div style="height:24px;"></div>
       <div class="chainwon-setting-box-content">
         <div class="chainwon-submit">
           <el-upload

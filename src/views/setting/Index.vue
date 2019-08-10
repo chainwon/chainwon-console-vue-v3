@@ -1,7 +1,7 @@
 <template>
   <el-main id="chainwon-content">
     <div class="chainwon-item setting-box">
-      <div class="chainwon-setting-box-header">
+      <div class="chainwon-setting-box-content">
         <el-form>
           <el-form-item label="搜索引擎" prop="region">
             <el-select v-model="form.search" placeholder="选择">

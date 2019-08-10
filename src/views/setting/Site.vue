@@ -1,7 +1,6 @@
 <template>
   <el-main id="chainwon-content">
     <div class="chainwon-item setting-box" v-for="item in sites" :key="item.index">
-      <div style="height:24px;"></div>
       <div class="chainwon-setting-box-content">
         <div class="chainwon-submit">
           <router-link class="mdui-ripple" :to="'/store/edit/'+item.site_id">

@@ -1,7 +1,6 @@
 <template>
   <el-main id="chainwon-content">
     <div class="chainwon-item setting-box">
-      <div style="height:24px;"></div>
       <div class="chainwon-setting-box-content">
         <div class="chainwon-submit">
           <el-upload
@@ -37,13 +36,18 @@
             style="margin-top:10px;"
             v-if="website.public == 1"
             title="此项目默认允许公共编辑，如果您是该站点站长，请登录绑定该站，然后可以禁止公共编辑！"
-            type="warning"
+            type="success"
             show-icon
           ></el-alert>
         </div>
       </div>
     </div>
-    <el-button v-if="website.public == 1 || website.banButton != null" :loading="loading" type="primary" @click="onSubmit()">更新信息</el-button>
+    <el-button
+      v-if="website.public == 1 || website.banButton != null"
+      :loading="loading"
+      type="primary"
+      @click="onSubmit()"
+    >更新信息</el-button>
     <el-button
       :loading="loading_ban"
       type="info"
@@ -59,15 +63,25 @@
       plain
     >允许公共编辑</el-button>
     <div class="chainwon-item setting-box chainwon-change">
-      <li
-        v-for="(item, index) in website.change"
-        :key="item.time"
-      >{{ index }} - {{ item.uid }} - {{ item.time }}</li>
+      <div class="chainwon-setting-box-content">
+        <li
+          v-for="(item, index) in website.change"
+          :key="item.time"
+        >{{ index }} - {{ item.uid }} - {{ item.time }}</li>
+      </div>
+    </div>
+    <div class="chainwon-item setting-box chainwon-comment">
+      <div class="chainwon-setting-box-content">
+        <div id="disqus_thread"></div>
+      </div>
     </div>
   </el-main>
 </template>
 
 <script>
+import "disqusjs/dist/disqusjs.css";
+import DisqusJS from "disqusjs";
+
 export default {
   name: "PucblicNavigation",
   data() {
@@ -82,6 +96,20 @@ export default {
         intro: ""
       }
     };
+  },
+  mounted() {
+    var dsqjs = new DisqusJS({
+      shortname: "chainwon",
+      siteName: "轻惋起始页",
+      identifier: window.location.href,
+      url: window.location.href,
+      title: this.website.name + " 站点编辑 - 轻惋起始页",
+      api: "https://disqus.skk.moe/disqus/",
+      apikey:
+        "61rFykkPI1vwruqiOS0NYWd388RVqIEdBhLuCkZwDjJvjr6mKep0TILZoQxFZHRX",
+      admin: "nexmoe",
+      adminLabel: "站长"
+    });
   },
   created() {
     this.axios
