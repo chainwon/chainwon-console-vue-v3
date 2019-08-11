@@ -49,6 +49,12 @@
       @click="onSubmit()"
     >提交更改</el-button>
     <el-button
+      v-if="website.public == 1 && website.banButton == null"
+      type="warning"
+      @click="r()"
+      plain
+    >认领站点</el-button>
+    <el-button
       :loading="loading_ban"
       type="info"
       v-if="website.banButton == 1"
@@ -187,6 +193,9 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    r() {
+      this.$router.push("/setting/site");
     }
   }
 };
