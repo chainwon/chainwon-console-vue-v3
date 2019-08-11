@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="chainwon-item setting-box">
-      <div class="chainwon-setting-box-header">添加网站</div>
+      <div class="chainwon-setting-box-header">认领站点</div>
       <div class="chainwon-setting-box-content">
         <el-steps :active="active" finish-status="success" simple>
           <el-step title="输入网站"></el-step>
@@ -143,7 +143,7 @@
             <ol>
               <li>
                 请点击
-                <el-link :href="'/api/view/verifyfile?id='+site_id" target="_blank">下载验证文件</el-link>获取验证文件（当前最新：chainwon_verify.html）
+                <a :href="'/api/view/verifyfile?id='+site_id" target="_blank">下载验证文件</a>获取验证文件（当前最新：chainwon_verify.html）
               </li>
               <li>将验证文件放置于您所配置域名({{ website.site }})的根目录下</li>
               <li>
