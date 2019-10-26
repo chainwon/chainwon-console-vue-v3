@@ -14,14 +14,14 @@
             :key="item.tid"
           >
             <div class="mixcm-theme">
-              <el-image :src="item.cover" width="100%" height="200px" fit="cover">
+              <el-image :src="item.cover" width="100%" height="290px" fit="cover">
                 <div
                   slot="error"
                   style="display: flex;
                     justify-content: center;
                     align-items: center;
                     width: 100%;
-                    height: 200px;
+                    height: 290px;
                     background: #f5f7fa;
                     color: #909399;"
                 >
