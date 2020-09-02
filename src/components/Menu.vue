@@ -31,10 +31,6 @@
         <span slot="title">网址大全</span>
       </el-menu-item>
       <li class="chainwon-divider"></li>
-      <el-menu-item index="/public/navigation">
-        <i class="iconfont icon-plus-circle-fill"></i>
-        <span slot="title">收录网址</span>
-      </el-menu-item>
       <el-menu-item index="/public/about">
         <i class="iconfont icon-info-circle-fill"></i>
         <span slot="title">关于本站</span>

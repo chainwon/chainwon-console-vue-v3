@@ -1,53 +1,10 @@
 <template>
   <el-main id="chainwon-content">
     <div class="chainwon-item setting-box">
-      <div class="chainwon-setting-box-content">
-        <el-form>
-          <el-form-item label="搜索引擎" prop="region">
-            <el-select v-model="form.search" placeholder="选择">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-        </el-form>
-      </div>
-    </div>
-    <div class="chainwon-item setting-box">
       <div class="chainwon-setting-box-header">你的个人网址链接</div>
       <div class="chainwon-setting-box-content">
         <el-form>
           <el-input v-model="form.url"></el-input>
-        </el-form>
-      </div>
-    </div>
-    <div class="chainwon-item setting-box">
-      <div class="chainwon-setting-box-header">网址大全显示设置</div>
-      <div class="chainwon-setting-box-content">
-        <p>你可以使用奇♂怪的操作，比如 Function Twelve (12)</p>
-        <el-form>
-          <el-form-item label="以最新收录排序">
-            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.newest"></el-switch>
-          </el-form-item>
-          <el-form-item label="展示未审核内容">
-            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.unaudited"></el-switch>
-          </el-form-item>
-          <el-form-item label="我是成年人">
-            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.ban"></el-switch>
-          </el-form-item>
-        </el-form>
-      </div>
-    </div>
-    <div class="chainwon-item setting-box">
-      <div class="chainwon-setting-box-header">额外功能</div>
-      <div class="chainwon-setting-box-content">
-        <el-form>
-          <el-form-item label="收看广告（唯一收入来源）">
-            <el-switch :active-value="'1'" :inactive-value="'0'" v-model="form.appearad"></el-switch>
-          </el-form-item>
         </el-form>
       </div>
     </div>
