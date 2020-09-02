@@ -13,12 +13,6 @@
         </el-alert>
       </p>
       <p>
-        <el-progress :text-inside="true" :stroke-width="20" :percentage="(500-date)/5"></el-progress>
-      </p>
-      <p>
-        <el-progress :text-inside="true" :stroke-width="20" :percentage="kao/365*100"></el-progress>
-      </p>
-      <p>
         <el-timeline>
           <el-timeline-item
             v-for="(activity, index) in activities"
