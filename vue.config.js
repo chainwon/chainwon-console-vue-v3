@@ -4,7 +4,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: "https://console.chainwon.com/api/",
+                target: "https://console.chainwon.com/api/index.php/",
                 ws: true,
                 changeOrigin: true,
                 pathRewrite:{
