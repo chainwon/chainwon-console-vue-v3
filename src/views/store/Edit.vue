@@ -4,7 +4,6 @@
       <div class="chainwon-setting-box-content">
         <div class="chainwon-submit">
           <el-upload
-            disabled
             class="chainwon-upload"
             :action="'/api/controller/uploadImage'"
             accept="image/*"
@@ -17,11 +16,10 @@
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
           <div class="chainwon-info">
-            <el-input disabled v-model="website.name" placeholder="标题" style="margin-bottom:10px;"></el-input>
-            <el-input disabled v-model="website.site" placeholder="链接"></el-input>
+            <el-input v-model="website.name" placeholder="标题" style="margin-bottom:10px;"></el-input>
+            <el-input v-model="website.site" placeholder="链接"></el-input>
           </div>
           <el-input
-            disabled
             type="textarea"
             v-model="website.intro"
             placeholder="介绍"
@@ -29,15 +27,47 @@
           ></el-input>
           <el-alert
             style="margin-top:10px;"
-            title="此项目不允许编辑!"
+            v-if="website.public == 0"
+            title="此项目不允许公共编辑，仅绑定该站点的站长可以修改站点信息！"
             type="warning"
             show-icon
           ></el-alert>
-          
+          <el-alert
+            style="margin-top:10px;"
+            v-if="website.public == 1"
+            title="此项目默认允许公共编辑，如果您是该站点站长，请登录绑定该站，然后可以禁止公共编辑！"
+            type="success"
+            show-icon
+          ></el-alert>
         </div>
       </div>
     </div>
-    
+    <el-button
+      v-if="website.public == 1 || website.banButton != null"
+      :loading="loading"
+      type="primary"
+      @click="onSubmit()"
+    >提交更改</el-button>
+    <el-button
+      v-if="website.public == 1 && website.banButton == null"
+      type="warning"
+      @click="r()"
+      plain
+    >认领站点</el-button>
+    <el-button
+      :loading="loading_ban"
+      type="info"
+      v-if="website.banButton == 1"
+      @click="ban()"
+      plain
+    >禁止公共编辑</el-button>
+    <el-button
+      :loading="loading_ban"
+      type="success"
+      v-if="website.banButton == 0"
+      @click="ban()"
+      plain
+    >允许公共编辑</el-button>
     <div class="chainwon-item setting-box chainwon-change">
       <div class="chainwon-setting-box-content">
         <li
