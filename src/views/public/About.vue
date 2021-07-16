@@ -2,15 +2,7 @@
   <el-main class="chainwon-content">
     <div class="chainwon-item chainwon-box">
       <p>
-        <el-alert title="准备高考了，所以出现问题不一定能及时修复。" type="error">
-          <el-link
-            type="primary"
-            href="https://shang.qq.com/wpa/qunwpa?idkey=d75bc474c00a39431e2dd839812bb5bc2fe401a3f47cdf256bd8803a1c22cdcb"
-            target="_blank"
-          >进群交流</el-link>：482634342
-          <br />
-          <el-link type="primary" href="https://club.chainwon.com/" target="_blank">进论坛反馈</el-link>：https://club.chainwon.com/
-        </el-alert>
+        <el-image src="https://i.dawnlab.me/1e5b46f95c578444e69821dfb5d5ae77.md.jpg"></el-image>
       </p>
       <p>
         <el-timeline>
@@ -31,6 +23,10 @@ export default {
   data() {
     return {
       activities: [
+        {
+          content: "整理了下2年前的代码，更加稳定了，整个系统全部都交给朋友维护了，应该会比我稳。控制台也开源了，Github：https://github.com/chainwon/chainwon-console-vue-v3",
+          timestamp: "2021-07-16"
+        },
         {
           content: "加入站点搜索，分类标签",
           timestamp: "2019-06-30"
